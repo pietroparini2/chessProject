@@ -1,18 +1,28 @@
+close all ;
 
 % Get the image & convert it to grayscale
-im = imread('Foto/001.jpg');
+im = imread('Foto/020.jpg');
 imGray = rgb2gray(im);
 imGray = im2double(imGray);
-[imH, imW] = size(imGray);
+[imH, imW] = size(im);
 
 % Blur the image for denoising
-H = fspecial('gaussian', [5, 5], 5);
-imGray = imfilter(imGray, H, 'replicate');
+%H = fspecial('gaussian', [5, 5], 5);
+%imGray = imfilter(imGray, H, 'replicate');
 
 % Create a gradient magnitude mask
-gradThreshold = 0.3;
-[gradMag, ~] = imgradient(imGray);
-gradMask = (gradMag > gradThreshold);
+%gradThreshold = 0.3;
+%gradMag, ~] = imgradient(imGray);
+%gradMask = (gradMag > gradThreshold);
+
+image = rgb2gray(im2double(im));
+image=sauvola(image,[50 50]);
+image=1-image;
+     
+     %image{pippo}=imopen(image{pippo},s1);
+     image=imdilate(image,s);
+     image=imopen(image,s1);
+     gradMask=image;
 
 % Find all the connected compoments & remove small ones
 cc = bwconncomp(gradMask);
