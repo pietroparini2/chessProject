@@ -1,15 +1,20 @@
 close all; clear all; clc;
 
+%% utilizzati
 debugBwImage = 0;
 debugChessBox = 0;
 debugShearChess = 0;
 
+debugFindCells=1;
+
+%% non ancora utilizzati
 debugEdgeResult = 0;
 debugRegistrationResult = 0;
-debugGetCell=0;
 
+
+%% applicazione programma dall'immagine x a y
 x = 1;
-y = 5;
+y = 1;
 w = y-x+1;
 %% chiamata lettura immagini
 images = readImages(x, y);
@@ -33,12 +38,15 @@ for n=1:w
     imageFocused = shearBoard(chess, convexImage, debugShearChess);
     
     %% ridimensiono la scacchiera
-    imageFocused = resizeChessboard(imageFocused);
+    imageFocused = resizeChessboard(imageFocused, [400, 400]);
     figure, imshow(imageFocused), title('Scacchiera ridimensionata');
     
     %% correzione colore al momento non necessaria (white balance)
     %imageFocused = whiteBalance(imageFocused);
-
+    
+    %%
+    cells = findCells(imageFocused, 16, debugFindCells);
+    [stringSudoku, debugValues] = ocrCells (cells, dataset);
 end
     
     

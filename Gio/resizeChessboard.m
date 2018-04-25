@@ -1,3 +1,3 @@
-function resized = resizeChessboard(chessB)
-    resized = imresize(chessB, [400, 400]);
+function resized = resizeChessboard(chessB, dim)
+    resized = imresize(chessB, dim);
 end
