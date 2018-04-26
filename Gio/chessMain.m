@@ -4,8 +4,7 @@ close all; clear all; clc;
 debugBwImage = 0;
 debugChessBox = 0;
 debugShearChess = 0;
-
-debugFindCells=1;
+debugChessSqaure = 1;
 
 %% non ancora utilizzati
 debugEdgeResult = 0;
@@ -45,8 +44,9 @@ for n=1:w
     %imageFocused = whiteBalance(imageFocused);
     
     %%
-    cells = findCells(imageFocused, 16, debugFindCells);
-    [stringSudoku, debugValues] = ocrCells (cells, dataset);
+    cells = findSquare(imageFocused, 16, debugChessSqaure);
+    
+    %[stringSudoku, debugValues] = ocrCells (cells, dataset);
 end
     
     
