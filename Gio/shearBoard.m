@@ -9,7 +9,7 @@ function imageFocused = shearBoard(chess, convexImage, debugShearChess)
 
     % Perform image registration
     convexImage = convexImage > 0; % fit_square_transform accept only logicals
-    tform = fitSquareTransform (convexImage, debugShearChess);
+    tform = fitSquareTransform (convexImage, debugShearChess); %funzione ancora non riguardata
     fittedImage = imwarp (masked, tform);
     fittedConvexImage = imwarp (convexImage, tform);
     

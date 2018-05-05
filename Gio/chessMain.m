@@ -46,6 +46,7 @@ for n=1:w
     %% ritaglio le varie celle
     cells = findSquare(imageFocused, 16, debugChessSqaure);
     
+    %% ultimo comando di ocrSudoku
     %[stringSudoku, debugValues] = ocrCells (cells, dataset);
 end
     
