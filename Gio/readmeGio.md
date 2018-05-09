@@ -22,3 +22,10 @@ funzioni ancora non viste:
 
 funzioni inutili:   (almeno per ora e quindi non ancora cancellate)
 -whiteBalance
+
+
+
+chessMain:
+-chess: immagine della scacchiera non raddrizzata a colori;
+-convexImage: maschera della sola scacchiera storta;
+-imageFocused: imma

@@ -13,7 +13,7 @@ debugRegistrationResult = 0;
 
 %% applicazione programma dall'immagine x a y
 x = 1;
-y = 1;
+y = 5;
 w = y-x+1;
 %% chiamata lettura immagini
 images = readImages(x, y);
@@ -29,12 +29,12 @@ for n=1:w
     
     %% find chessboard /sto guardando solo una bounding box su due richieste
     chessBox  = chessDiscover(BW{n}, 2, debugChessBox, resized);
-    chess = imcrop (images{n}, (chessBox(1).BoundingBox(:)) .* ratio);
+    chess = imcrop (images{n}, (chessBox(1).BoundingBox(:)) .* ratio); 
     convexImage= im2uint8 (chessBox(1).ConvexImage);
     %figure, imshow(chess), title('BoundingBox Chessboard');
     
     %% 'raddrizza' scacchiera e altre operazioni
-    imageFocused = shearBoard(chess, convexImage, debugShearChess);
+    imageFocused = chessTrasform(chess, convexImage, debugShearChess);
     
     %% ridimensiono la scacchiera
     imageFocused = resizeChessboard(imageFocused, [400, 400]);
