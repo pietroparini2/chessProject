@@ -7,12 +7,13 @@ funzioni scritte da me/riscritte:
 -makeChessPiecesDataset (nome brutto, equivalente mezzo copiato di loadDataset)
 -readImages 
 -resizeChessboard (è inutile... prima o poi è da togliere ed integrare direttamente senza chiamarla)
--resieImage
+-resizeImage
+-chessTrasform: comprende le funzioni shearBoard e fitSquareTrasform ma è scritta interamente da me 
+                (o meglio presa su internet e modificata leggermente per farla funzionare anche per noi) 
 
 funzioni copiate spudoratamente:
 -chessDiscover (l'originale è getSquare)
--fitSquareTrasform (nemmeno rinominata)
--shearBoard (estratta dalla funzione ocrSudoku)
+
 
 funzioni ancora non viste:
 -computeAll
@@ -22,7 +23,6 @@ funzioni ancora non viste:
 
 funzioni inutili:   (almeno per ora e quindi non ancora cancellate)
 -whiteBalance
-
 
 
 chessMain:
