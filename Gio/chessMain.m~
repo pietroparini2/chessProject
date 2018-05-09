@@ -43,7 +43,7 @@ for n=1:w
     %% correzione colore al momento non necessaria (white balance)
     %imageFocused = whiteBalance(imageFocused);
     
-   %% parte due
+   
     %% ritaglio le varie celle
     cells = findSquare(imageFocused, 16, debugChessSqaure);
     

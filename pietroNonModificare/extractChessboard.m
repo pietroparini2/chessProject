@@ -1,8 +1,8 @@
-function out_square = extractChessboard  (bw_image, num_candidate, debug, originalImage)
+function out_square = extractChessboard(bw_image, num_candidate, debug, originalImage)
 
     
     squares = [];
-    feature_bb = regionprops (bw_image, 'BoundingBox', 'ConvexArea','ConvexImage');
+    feature_bb = regionprops(bw_image, 'BoundingBox', 'ConvexArea','ConvexImage');
 
     % Note that the area is the sum of all pixel belonging to the connected
     % component and not the area of the bounding box!
@@ -18,35 +18,7 @@ function out_square = extractChessboard  (bw_image, num_candidate, debug, origin
        
         % if the boundingBox is a square (tolerance 20%).
         % Computed as the ratio between the difference from the edges and
-        % the sum of the two.
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
+        % the sum of the two. 
         % Some examples
         % w = 1, h = 500: |(500 - 1)| / (500 + 1) = 99,6
         % w = 50, h = 50: |(50 - 50)| / ... = 0 perfect square

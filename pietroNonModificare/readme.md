@@ -1,7 +1,7 @@
 
 ## Documentazione delle funzioni del progetto 
 
-### Resize
+### resize
  funzione che si occupa di fare una resize dell'immagine in modo da rendere più veloce e più scalabile tutta la computazione.
  diminuisce tutte le immagini a un massimo di dimensioni dei 2 lati di 1042 px tenendo le proporzioni originali.
  * **input:** immagine del dataset di immagini da analizzare 
