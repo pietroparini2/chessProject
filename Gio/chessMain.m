@@ -23,6 +23,7 @@ for n=1:w
     %% resize immagini
     [resized, ratio] = resizeImage(images{n});
     
+    
     %% immagine in BW
     BW{n} = bwImage(resized, debugBwImage);
     %figure, imshow(BW{n}), title('BW image');
@@ -45,7 +46,7 @@ for n=1:w
     
    %% parte due
     %% ritaglio le varie celle
-    cells = findSquare(imageFocused, 16, debugChessSqaure);
+    %cells = findSquare(imageFocused, 16, debugChessSqaure);
     
     %% ultimo comando di ocrSudoku
     %[stringSudoku, debugValues] = ocrCells (cells, dataset);
