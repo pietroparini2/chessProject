@@ -23,3 +23,15 @@ progetto esame elaborazione delle immagini febbraio 2018
  vengono salvate in variabili separate le dimensioni dell'immagine originale, immagine resized e scala
  in un array boolean test viene verificato stia funzionando correttasmente la 'scalata' di tutte le immagini
  * **funzioni invocate:** readImages
+
+### elaborationOne
+ funzione, prima possibilità di elaborazione
+ porta l'immagine a livelli di grigi se necessario, elabora tramite equalizzazione dell istogramma e sogliatura immagine con soglia individuata tramite Otsu.
+ * **input:** immagine già nella dimensione stabilita per l'elaborazione
+ * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
+ * **test:** testElaborationOne
+
+#### testElaboratioOne
+ script di test per la funzione elaborationOne
+ vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
+* **funzione invocate:** readImages
