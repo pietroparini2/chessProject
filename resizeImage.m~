@@ -1,0 +1,16 @@
+function  [imageResized, ratio]=resizeImage(image)
+    [r, c, ~] = size(image);
+    if r>1042||c>1042
+        if r<c
+            imageResized = imresize(image, [1042 NaN]);
+            ratio = r/1042;
+        else
+            imageResized = imresize(image, [NaN 1042]);
+            ratio = c/1042;
+        end
+    else
+    imageResized = image;
+        ratio = 1;
+    end
+end
+    
