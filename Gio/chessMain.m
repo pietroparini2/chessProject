@@ -4,7 +4,7 @@ close all; clear all; clc;
 debugBwImage = 0;
 debugChessBox = 0;
 debugShearChess = 0;
-debugChessSqaure = 1;
+debugChessSqaure = 0;
 
 %% non ancora utilizzati
 debugEdgeResult = 0;
