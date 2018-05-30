@@ -1,7 +1,7 @@
 # chessProject
 progetto esame elaborazione delle immagini Giugno 2018
 
-#to do:
+# to do:
 * aggiungere nella doc le chiamate alle funzioni esterne e studiarsele un attimo
 * ricordarsi che c'è la funzione sauvola messa a caso
 * implemntare il controllo sulle diagonali, e su pitagora
@@ -9,7 +9,7 @@ progetto esame elaborazione delle immagini Giugno 2018
 
 ## Documentazione delle funzioni del progetto
 
-#prima parte progetto
+# prima parte progetto
 La prima parte del progetto si occupa di estrarre dall'immagine originale la scacchiera.
 
 #### readImages(aux)
@@ -64,12 +64,12 @@ funzione che carica le immagini nell'intervallo specificato
  * **parametri:**  errore di approssimazione dei lati = 0.20= stimato sulle prime 10 immagini, considerando che è solo un primo passaggio il secondo verrà poi implementato (dopo si può un po' abbassare )
  * **test:** testChessDiscover
 
-####testChessDiscover
+#### testChessDiscover
 script di test per la funzione chessDiscover
 vengono caricate, elaborate, e mostratre a video, le immagini originale tagliate e la maschera dell'immagine binaria tagliata
 * **funzione invocate:** readImages, resizeImage, elaborationOne, chessDiscover
 
-####cornersMask(aux)
+#### cornersMask(aux)
   funzione che si occupa di individuare i 4 corner di una maschera binaria che riceve in input.
   * **input:** maschera binaria figura bianco su sfondo nero
   * **output:** matrice con i 4 corner
@@ -87,7 +87,7 @@ vengono caricate, elaborate, e mostratre a video, le immagini originale tagliate
   vengono mostrate a video le immagini,() interne alla più grossa boundingbox quadrata ) rispettivamente prima di essere raddrizate e successivamente
   * **funzioni invocate:**   readImages, resizeImage, elaborationOne, chessDiscover,  straightensChess
 
-####testFirstHalfPipe
+#### testFirstHalfPipe
   test che accorpora tutti i test sviluppati fino a questo punto, mostrando in successione tutti i risultati dii ogni test.
   * **funzioni invocate:**   readImages, resizeImage, elaborationOne, chessDiscover,  straightensChess.
 
