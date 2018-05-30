@@ -12,8 +12,13 @@ debugRegistrationResult = 0;
 
 
 %% applicazione programma dall'immagine x a y
+<<<<<<< HEAD
 x = 20;
 y = 23;
+=======
+x = 1;
+y = 2;
+>>>>>>> 4d36bf2530a739c258a17a62b0fec54ebeba2799
 w = y-x+1;
 %% chiamata lettura immagini
 images = readImages(x, y);
@@ -35,16 +40,17 @@ for n=1:w
     %figure, imshow(chess), title('BoundingBox Chessboard');
     
     %% 'raddrizza' scacchiera e altre operazioni
-    imageFocused = chessTrasform(chess, convexImage, debugShearChess); %radrizzare la mascchera e tira fuori l'immagine raddrizzata
-    
-    %% ridimensiono la scacchiera
-    imageFocused = resizeChessboard(imageFocused, [400, 400]);
-    figure, imshow(imageFocused), title('Scacchiera ridimensionata');
+    imageFocused = chessTrasform(chess, convexImage, debugShearChess, [400, 400]); %radrizzare la mascchera e tira fuori l'immagine raddrizzata
     
     %% correzione colore al momento non necessaria (white balance)
     %imageFocused = whiteBalance(imageFocused);
     
    %% parte due
+    
+    %% creazione dataset dei pezzi
+    dataset = makeChessPiecesDataset(16);
+    %figure, imshow(dataset(1).Image);
+    
     %% ritaglio le varie celle
     %cells = findSquare(imageFocused, 16, debugChessSqaure);
     

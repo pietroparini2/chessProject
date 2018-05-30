@@ -1,4 +1,4 @@
-function out_transform = chessTrasform (chess, convexImage, debug)
+function out = chessTrasform (chess, convexImage, debug, dim)
     [r, c, ~] = size(convexImage);
     chess = imresize(chess, [r, c]);
     chess = padarray(chess, [5, 5]);
@@ -29,6 +29,9 @@ function out_transform = chessTrasform (chess, convexImage, debug)
 
     chessB  = regionprops(IT, 'boundingBox');
     
+    d = imcrop (chess, (chessB(1).BoundingBox(:)));
+    out = imresize(d, dim);
+    
     %% stampa bounding-Box
     if debug == 1
         figure, imshow(IT), title('image with bounding boxs')
@@ -40,6 +43,4 @@ function out_transform = chessTrasform (chess, convexImage, debug)
         hold off
         figure, imshow(d), title('Mia ritaglaita');
     end
-    d = imcrop (chess, (chessB(1).BoundingBox(:)));
-    out_transform = d;
 end
