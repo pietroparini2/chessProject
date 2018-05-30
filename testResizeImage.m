@@ -10,7 +10,7 @@ test= zeros(1, (b-a+1));
 
 for i=1:(b-a+1)
 
-    
+    imageTest=images{i};
     [x,y,~] = size(imageTest);
 
     figure, imshow(imageTest), title(strcat((num2str(x)), 'x',(num2str(y))));

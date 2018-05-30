@@ -10,7 +10,7 @@ function  [imageResized, scale]=resizeImage(image)
         end
     else
     imageResized = image;
-        scale = 1;
+    scale = 1;
     end
 end
     

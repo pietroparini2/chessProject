@@ -12,8 +12,8 @@ debugRegistrationResult = 0;
 
 
 %% applicazione programma dall'immagine x a y
-x = 1;
-y = 7;
+x = 20;
+y = 23;
 w = y-x+1;
 %% chiamata lettura immagini
 images = readImages(x, y);
@@ -30,7 +30,7 @@ for n=1:w
     
     %% find chessboard /sto guardando solo una bounding box su due richieste
     chessBox  = chessDiscover(BW{n}, 2, debugChessBox, resized);%2--> chiede due bb più grand
-    chess = imcrop (images{n}, (chessBox(1).BoundingBox(:)) .* ratio); %-->effettivamente guarda solo la prima
+    chess = imcrop (images{n}, (chessBox(1).BoundingBox(:)) .* ratio); %-->effettivamente guarda solo la prima con i : metto in colonna
     convexImage= im2uint8 (chessBox(1).ConvexImage);%maschera della scacchiera
     %figure, imshow(chess), title('BoundingBox Chessboard');
     

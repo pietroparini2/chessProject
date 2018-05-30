@@ -7,9 +7,9 @@ function out_transform = chessTrasform (chess, convexImage, debug)
     %% 1. Get rid of the white border
     I2 = imclearborder(convexImage);
     %% 2. Find each of the four corners
-    [y,x] = find(I2);
-    [~,loc] = min(y+x);
-    C = [x(loc),y(loc)];
+    [y,x] = find(I2); % riga = y column = x
+    [~,loc] = min(y+x); %posizione della somma minima
+    C = [x(loc),y(loc)]; %trovo lre cordinate del punto la cui somma è la minore possibile 
     [~,loc] = min(y-x);
     C(2,:) = [x(loc),y(loc)];
     [~,loc] = max(y+x);
@@ -23,9 +23,9 @@ function out_transform = chessTrasform (chess, convexImage, debug)
     D = mean(C([3 4],2));
     C2 = [L U; R U; R D; L D];
     %% 4. Do the image transform
-    T = cp2tform(C ,C2,'projective');
-    IT = imtransform(im2bw(convexImage),T); %IM2BW is not necessary
-    chess = imtransform(chess,T);
+    T = fitgeotrans(C ,C2,'projective');
+    IT = imwarp(convexImage,T); %IM2BW is not necessary
+    chess = imwarp(chess,T);
 
     chessB  = regionprops(IT, 'boundingBox');
     

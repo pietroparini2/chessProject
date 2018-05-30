@@ -1,7 +1,7 @@
-function outFirstPossibility= elaborationOne (image)
+function out= elaborationOne (image)
     %se ha più canali la concerto in gray scale
-    [~, ~, ch] = size(image);
-    if ch > 1
+    [~, ~, channel] = size(image);
+    if channel > 1
      im = rgb2gray (image);
     end
     
@@ -10,12 +10,12 @@ function outFirstPossibility= elaborationOne (image)
     im = adapthisteq (im);
     
     %sottrazione chiusura con immagine a livelli di grigi
-    edge = imclose (im, strel ('disk', 6)) - im;
+    edge = imclose(im, strel ('disk', 6)) - im;
     
     %Global image threshold using Otsu's method
     otsu = graythresh(edge);
     
     %binarizzazione immagine  usando la soglia otsu
-    outFirstPossibility = imbinarize (edge, otsu);
+    out = imbinarize (edge, otsu);
     
 end
