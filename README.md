@@ -1,7 +1,11 @@
 # chessProject
 progetto esame elaborazione delle immagini Giugno 2018
 
-
+#to do:
+* aggiungere nella doc le chiamate alle funzioni esterne e studiarsele un attimo
+* ricordarsi che c'è la funzione sauvola messa a caso
+* implemntare il controllo sulle diagonali, e su pitagora
+* implementare un secondo tipo di elaborazione (elaborationTwo) da lanciare se dopo il controllo delle diagonali non rimangono  candidati plausibili
 
 ## Documentazione delle funzioni del progetto
 
