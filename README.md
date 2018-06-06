@@ -34,27 +34,31 @@ funzione che carica le immagini nell'intervallo specificato
  in un array boolean test viene verificato stia funzionando correttasmente la 'scalata' di tutte le immagini tramite il calcolo inverso
  * **funzioni invocate:** readImages
 
-### elaborationOne
+### mainElaboration
  funzione, prima possibilità di elaborazione
  porta l'immagine a livelli di grigi se necessario, elabora tramite equalizzazione dell istogramma e sogliatura immagine con soglia individuata tramite Otsu.
  * **input:** immagine già nella dimensione stabilita per l'elaborazione
  * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
  * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 10 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
- * **test:** testElaborationOne
+ * **test:** testMainElaboration  
 
-#### testElaboratioOne
+#### testMainElaboration
  script di test per la funzione elaborationOne
  vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
- * **funzione invocate:** readImages, resizeImage, elaborationOne
+ * **funzione invocate:** readImages, resizeImage, mainElaboration
 
-#### elaborationTwo
+#### textureElaboration
  funzione, seconda possibilità di elaborazione
- !!! da implementare, per ora è a caso... deve fornire un alternativa/complementare ad elaborationOne
-
-#### testElaborationTwo
- script di test per la funzione elaborationTwo
+ sviluppata in modo complementare alla mainElaboration, per poter individuare le scacchiere la dove c'è la presenza di uno sfondo a texture
+ * **input:** immagine già nella dimensione stabilita per l'elaborazione 
+ * **output:** immagine in bianco e nero pronta per il riconoscimento dei componenti
+ * **parametri:** misure dischi (!!!scrivere il perchè dopo aver fatto il ripasso)
+ * **test:** testTextureElaboration
+ 
+#### testTextureElaboration
+ script di test per la funzione textureElaboration
  vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
- * **funzione invocate:** readImages, rersizeImage, elaborationTwo
+ * **funzione invocate:** readImages, rersizeImage, textureElaboration
 
 ### chessDiscover
  funzione che si occupa di individuare la scacchiera.
@@ -90,5 +94,8 @@ vengono caricate, elaborate, e mostratre a video, le immagini originale tagliate
 #### testFirstHalfPipe
   test che accorpora tutti i test sviluppati fino a questo punto, mostrando in successione tutti i risultati dii ogni test.
   * **funzioni invocate:**   readImages, resizeImage, elaborationOne, chessDiscover,  straightensChess.
+
+### isChessBoard 
+
 
   fine prima parte progetto--------------------------------------------------------------------------------
