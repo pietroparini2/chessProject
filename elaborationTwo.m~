@@ -6,11 +6,11 @@ function out=elaborationTwo (image)
     
     im= im2double(im);
    % im = imadjust(im);
-   
-    im1= imopen(im, strel('disk',7));
+    im=imbinarize(im,'adaptive','ForegroundPolarity','dark','Sensitivity',0.5);
+    %im=  imdilate(im, strel ('disk', 4));
+    im= imopen(im, strel('disk',6));
     
-    edge = imbinarize(imclose(im1, strel ('disk', 60)) - im);
-    out=edge;
+    out=im;
  
     
     
