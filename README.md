@@ -99,3 +99,33 @@ vengono caricate, elaborate, e mostratre a video, le immagini originale tagliate
 
 
   fine prima parte progetto--------------------------------------------------------------------------------
+
+#### fenGenerator
+  funzione che si occupa di creare la stringa FEN partendo dall'immagine raddrizzata della scacchiera. Per individuare i pezzi utilizza la correlazione incrociata normalizata.
+  * **input:** immagine della scacchiera ritagliata e raddrizzata, dataset dei pezzi per il match.
+  * **output:** stringa fen.
+  * **parametri:** 0,6 utilizzato come soglia minima per riconoscere tramite la correlazione incrociata normalizzata
+  * **funzioni invocate:**   findSquare, fenString.
+
+#### findSquare
+  funzione che ritaglia dalla scacchiera le singole celle.
+  * **input:** imaggine scacchiera ritagliata e raddrizzata, valore di debug (0/1).
+  * **output:** singole celle in oggetto di tipo "cell".
+  * **funzione invocata da:** fenGenerator
+
+#### fenString
+  funzione che crea la stringa fen partendo dalla matrice degli indici dei pezzi trovata grazie alla funzione fenGenerator.
+  * **input:** matrice contenente i vari indici dei pezzi.
+  * **output:** stringa fen.
+  * **funzione invocata da:** fenGenerator
+
+#### fenStringApp
+  funzione che crea la stringa fen partendo dalla matrice con le iniziali dei pezzi.
+  * **input:** matrice contenente le iniziali dei pezzi.
+  * **output:** stringa fen.
+  * **funzione invocata da:** fenString
+
+#### testOCR
+  script di test per la parte della creazione della stringa
+  * **funzioni invocate:** readImages, makeDataset, resizeImage, mainElaboration, chessDiscover, straightensChess, fenGenerator.
+    

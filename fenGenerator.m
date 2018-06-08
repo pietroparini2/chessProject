@@ -1,6 +1,7 @@
-function fen = fenGenerator (cells, dataset) 
+function fen = fenGenerator (chessboard, dataset) 
     
-    % use normxcorr2 to find a template chess in chessboard
+    %% chiamata al metodo per estrarre le celle
+    cells = findSquare(chessboard, 0);
 
     scores = zeros(8, 8, 4);
     indici = zeros(8, 8, 4);
@@ -10,16 +11,13 @@ function fen = fenGenerator (cells, dataset)
     %% for per ciclare su tutte le caselle
     for i = 1 : 8
         for j = 1 : 8
-            % current cell
-            cella = cells{i, j};
+            cella = cells{i, j}; % cella corrente
             maxCorrValue = zeros(1, 4);
 
-            % confronto con tutti i pezzi possibili
-            for k = 1: 26
-                chess = dataset(k).Image;
+            for k = 1: 26 % confronto con tutti i pezzi possibili
+                chess = dataset(k).Image; %template corrente
                 for h = 1 : 4
-                    % search for a match.
-                    correlationOutput = normxcorr2(chess, cella);
+                    correlationOutput = normxcorr2(chess, cella); % ricerca del tamplate
                     % Find out where the normalized cross correlation image is brightest.
                     corrValue = max(abs(correlationOutput(:)));
                     if corrValue > maxCorrValue(h)
@@ -50,6 +48,7 @@ function fen = fenGenerator (cells, dataset)
 
     [m, rotazione] = max(punteggio);
     
+    %% aggiussto la matrice degli indici se la scacchiera è girata
     indici = indici(:, :, rotazione);
     if rotazione > 1
         angolo = -90 * (rotazione - 1);
@@ -57,6 +56,6 @@ function fen = fenGenerator (cells, dataset)
     end
             
     
-    %% chiamata per funzione composizione stringa
+    %% chiamata della funzione che compone la stringa fen
     fen = fenSting(indici);
 end
