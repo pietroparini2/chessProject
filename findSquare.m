@@ -30,7 +30,7 @@ function cells = findSquare(image, debug)
                 piuX = 2;
             end
             cells{i,j} = image(y-menoY:(y+lato-1+piuY), x-menoX:(x+lato-1+piuX)); 
-            %cells{i,j} = imresize(cells{i,j}, [50 50]); 
+            cells{i,j} = imresize(cells{i,j}, [50 50]); 
             x = x + lato;
         end
         y = y + lato;

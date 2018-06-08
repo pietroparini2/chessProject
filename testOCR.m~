@@ -2,13 +2,13 @@ close all, clear, clc;
 
 %% generare stringhe fen
 
-a=1;
-b=1;
+a=60;
+b=60;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
-dataset = makeDataset(46);
-fen = cell(1, b-a+1);
+dataset = makeDataset(47);
+
 
 for i=1:(b-a+1)
 
@@ -24,9 +24,9 @@ for i=1:(b-a+1)
     im = straightChess;
     im = im(k+1:end-k,k+1:end-k, :);
     imA = imadjust(rgb2gray(im));
-    figure, imshow(imA);
+    figure, montage({im, imA});
     
     
     cells = findSquare(imA, 0);
-    fen{i} = fenGenerator(cells, dataset); 
+    fen{} = fenGenerator(cells, dataset); 
 end
