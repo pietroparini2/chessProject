@@ -1,4 +1,4 @@
-function cells = findSquare(image, numSections, debug)
+function cells = findSquare(image, debug)
     [m, n, ~] = size(image);
     lato = m/8;
     cells = cell(8,8);

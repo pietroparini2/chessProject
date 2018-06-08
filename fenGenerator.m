@@ -1,4 +1,4 @@
-function [scores, fen] = fenGenerator (cells, dataset) 
+function fen = fenGenerator (cells, dataset) 
     
     % use normxcorr2 to find a template chess in chessboard
 
