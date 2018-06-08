@@ -1,5 +1,6 @@
 close all, clear, clc;
 
+% in pratica è la classe main poi vedrò di sistemarla
 %% generare stringhe fen
 
 a=1;
@@ -7,7 +8,14 @@ b=1;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
-dataset = makeDataset(46);
+if exist('dataset.mat', 'file') == 2
+    dataset = load('dataset.mat');
+    dataset = dataset.dataset;
+else
+    dataset = makeDataset(46);
+    save('dataset', 'dataset');
+end
+
 fen = cell(1, b-a+1);
 
 for i=1:(b-a+1)
