@@ -1,25 +1,24 @@
 function flag = isChessboard(testChessboard)
 
  testChessboard =rgb2gray(testChessboard);
- test= imread('./Foto/test/test1.jpg');
- [x,y,~]=size(test);
+ testModel= imread('./Foto/test/test1.jpg');
+ [x,y,~]=size(testModel);
  
-  test =rgb2gray (test);
-  test=imbinarize(test);
+  testModel =rgb2gray (testModel);
+  testModel=imbinarize(testModel);
   
   testChessboard=imbinarize(testChessboard);
   
-  test=imopen(test , strel ('disk', 3));
+  testModel=imopen(testModel , strel ('disk', 3));
   testChessboard= imopen(testChessboard , strel ('disk', 3));
   
-  figure, subplot(1,2,1), imshow(test)
-          subplot(1,2,2), imshow(testChessboard);
- 
- 
- 
+  %%da mettere cme debug
+%   figure, subplot(1,2,1), imshow(testModel)
+%           subplot(1,2,2), imshow(testChessboard);
+
  imageResized = imresize(testChessboard, [x,y]);
  
- R=corr2(test,imageResized);
+ R=corr2(testModel,imageResized);
  flag=R;
  
 
