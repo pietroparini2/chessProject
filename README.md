@@ -74,10 +74,10 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **funzione invocate:** readImages, resizeImage, elaborationOne, chessDiscover
 
 #### cornersMask(aux)
-    funzione che si occupa di individuare i 4 corner di una maschera binaria che riceve in input.
-    * **input:** maschera binaria figura bianco su sfondo nero
-    * **output:** matrice con i 4 corner
-    * **invocata da:** straightnessChess, (la userò anche per  controllare le diagonali)
+  funzione che si occupa di individuare i 4 corner di una maschera binaria che riceve in input.
+  * **input:** maschera binaria figura bianco su sfondo nero
+  * **output:** matrice con i 4 corner
+  * **invocata da:** straightnessChess, (la userò anche per  controllare le diagonali)
 
 ### straightensChess
   funzione che si occupa di raddrizzare la scacchiera all'interno della boundingBox che la contiene.
