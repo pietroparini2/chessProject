@@ -4,7 +4,7 @@ close all, clear, clc;
 %% generare stringhe fen
 
 a=1;
-b=1;
+b=5;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
@@ -22,9 +22,7 @@ for i=1:(b-a+1)
 
     original = images{i};
     [imageResized, scale] = (resizeImage(original)); % classe di test già sviluppata
-    imageTest = mainElaboration(imageResized);  % classe di test già sviluppata
-    chessBox   = chessDiscover(imageTest, scale, original); % classe di test già sviluppata
-    straightChess= straightensChess(chessBox.Image,chessBox.ConvexImage);
+    straightChess= chooseElaboration(imageResized,scale,original);
     
     
     %% mettere da qualche altra parte

@@ -102,7 +102,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **parametri:** disco di dimensione 3 (!!! scrivere perchè dopo il ripasso)
   * **test:** testIsChessboard 
 
-####testIsChessboard 
+#### testIsChessboard 
   script di test per la funzione isChessboard
   * **funzioni invocate:**  isChessboard, readImages, resizeImage, elaborationOne, chessDiscover,  straightensChess.
 
@@ -145,4 +145,53 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 #### testOCR
   script di test per la parte della creazione della stringa
   * **funzioni invocate:** readImages, makeDataset, resizeImage, mainElaboration, chessDiscover, straightensChess, fenGenerator.
-    
+
+stringhe FEN da controllare:
+    [8/8/4p2Q/2K1p3/4k3/2p2r2/5RRp/7B]
+    [1B6/5p2/2pnN1P1/R1N1k3/4p3/8/5Q2/6K]
+    [8/4r1n1/8/Q4N2/5k2/3P1N1K/7n/7B]
+    [R7/1kN1Q3/2b5/Pn6/4Np2/8/2R4B/7K]
+    [8/8/8/5R2/8/2KPkB1b/8/5R2]
+    [1B6/8/2Q1P3/3Nr3/4k1BR/1P6/2K5/2n3b1]
+    [4rQB1/6n1/3p4/5b2/N2R4/1P6/2k5/KR6]
+    [2bb1K2/4p3/5k1n/3QNP2/5R1P/8/8/8]
+    [R7/1kN1Q3/2b5/Pn6/4Np2/8/2R4B/7K]
+    [8/4r1n1/8/Q4N2/5k2/3P1N1K/7n/7B]
+    [2bb1K2/4p3/5k1n/3QNP2/5R1P/8/8/8]
+    [4rQB1/6n1/3p4/5b2/N2R4/1P6/2k5/KR6]
+    [1B6/5p2/2pnN1P1/R1N1k3/4p3/8/5Q2/6K]
+    [8/8/4p2Q/2K1p3/4k3/2p2r2/5RRp/7B]
+    [1B6/8/2Q1P3/3Nr3/4k1BR/1P6/2K5/2n3b1]
+    [8/8/8/5R2/8/2KPkB1b/8/5R2]
+    [1B6/5p2/2pnN1P1/R1N1k3/4p3/8/5Q2/6K]
+    [8/8/8/5R2/8/2KPkB1b/8/5R2]
+    [R7/1kN1Q3/2b5/Pn6/4Np2/8/2R4B/7K]
+    [4rQB1/6n1/3p4/5b2/N2R4/1P6/2k5/KR6]
+    [8/4r1n1/8/Q4N2/5k2/3P1N1K/7n/7B]
+    [8/8/4p2Q/2K1p3/4k3/2p2r2/5RRp/7B]
+    [2bb1K2/4p3/5k1n/3QNP2/5R1P/8/8/8]
+    [1B6/8/2Q1P3/3Nr3/4k1BR/1P6/2K5/2n3b1]
+    [8/4r1n1/8/Q4N2/5k2/3P1N1K/7n/7B]
+    [8/8/4p2Q/2K1p3/4k3/2p2r2/5RRp/7B]
+    [1B6/5p2/2pnN1P1/R1N1k3/4p3/8/5Q2/6K]
+    [4rQB1/6n1/3p4/5b2/N2R4/1P6/2k5/KR6]
+    [2bb1K2/4p3/5k1n/3QNP2/5R1P/8/8/8]
+    [1B6/8/2Q1P3/3Nr3/4k1BR/1P6/2K5/2n3b1]
+    [R7/1kN1Q3/2b5/Pn6/4Np2/8/2R4B/7K]
+    [8/8/8/5R2/8/2KPkB1b/8/5R2]
+    [8/4r1n1/8/Q4N2/5k2/3P1N1K/7n/7B]
+    [8/8/4p2Q/2K1p3/4k3/2p2r2/5RRp/7B]
+    [4rQB1/6n1/3p4/5b2/N2R4/1P6/2k5/KR6]
+    [2bb1K2/4p3/5k1n/3QNP2/5R1P/8/8/8]
+    [1B6/8/2Q1P3/3Nr3/4k1BR/1P6/2K5/2n3b1]
+    [8/8/8/5R2/8/2KPkB1b/8/5R2]
+    [R7/1kN1Q3/2b5/Pn6/4Np2/8/2R4B/7K]
+    [1B6/5p2/2pnN1P1/R1N1k3/4p3/8/5Q2/6K]
+    [8/4r1n1/8/Q4N2/5k2/3P1N1K/7n/7B]
+    [R7/1kN1Q3/2b5/Pn6/4Np2/8/2R4B/7K]
+    [1B6/5p2/2pnN1P1/R1N1k3/4p3/8/5Q2/6K]
+    [2bb1K2/4p3/5k1n/3QNP2/5R1P/8/8/8]
+    [8/8/8/5R2/8/2KPkB1b/8/5R2]
+    [4rQB1/6n1/3p4/5b2/N2R4/1P6/2k5/KR6]
+    [1B6/8/2Q1P3/3Nr3/4k1BR/1P6/2K5/2n3b1]
+    [8/8/4p2Q/2K1p3/4k3/2p2r2/5RRp/7B]
