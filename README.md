@@ -1,4 +1,4 @@
-![image of chess] (titleImage.jpg)
+![imagechess](titleImage.jpg)
 
 
 # chessProject
