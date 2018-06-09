@@ -13,39 +13,39 @@ progetto esame elaborazione delle immagini Giugno 2018
 La prima parte del progetto si occupa di estrarre dall'immagine originale la scacchiera.
 
 #### readImages(aux)
-    funzione che carica le immagini nell'intervallo specificato
-    * **input** due valori interi che indicano l'intervallo delle immaggini da analizzare
-    * **output** void
-    * **parametri:** 0
-    * **invocata da:** tutte le funzioni di test  
+  funzione che carica le immagini nell'intervallo specificato
+  * **input** due valori interi che indicano l'intervallo delle immaggini da analizzare
+  * **output** void
+  * **parametri:** 0
+  * **invocata da:** tutte le funzioni di test  
 
 
 ### resizeImage
-     funzione che si occupa di fare una resize dell'immagine in modo da rendere più veloce e più scalabile tutta la computazione, e di lavorare in un formato standardizzato.
-     diminuisce tutte le immagini a un massimo di dimensioni dei 2 lati di 1042 px tenendo le proporzioni originali. (42 -->numero perfetto)
-     * **input:** immagine del dataset di immagini da analizzare
-     * **output:** array di due elementi , immagine di nuove dimensione , scala usata per le immagini
-     * **parametri:** misura massima degli assi  dell'immagine= 1000+42
-     * **test**: testResize
+   funzione che si occupa di fare una resize dell'immagine in modo da rendere più veloce e più scalabile tutta la computazione, e di lavorare in un formato standardizzato.
+   diminuisce tutte le immagini a un massimo di dimensioni dei 2 lati di 1042 px tenendo le proporzioni originali. (42 -->numero perfetto)
+   * **input:** immagine del dataset di immagini da analizzare
+   * **output:** array di due elementi , immagine di nuove dimensione , scala usata per le immagini
+   * **parametri:** misura massima degli assi  dell'immagine= 1000+42
+   * **test**: testResize
 
 #### testResize
-     script di  test per la funzione resize
-     vengono salvate in variabili separate le dimensioni dell'immagine originale, immagine resized e scala
-     in un array boolean test viene verificato stia funzionando correttasmente la 'scalata' di tutte le immagini tramite il calcolo inverso
-     * **funzioni invocate:** readImages
+   script di  test per la funzione resize
+   vengono salvate in variabili separate le dimensioni dell'immagine originale, immagine resized e scala
+   in un array boolean test viene verificato stia funzionando correttasmente la 'scalata' di tutte le immagini tramite il calcolo inverso
+   * **funzioni invocate:** readImages
 
 ### mainElaboration
-     funzione, prima possibilità di elaborazione
-     porta l'immagine a livelli di grigi se necessario, elabora tramite equalizzazione dell istogramma e sogliatura immagine con soglia individuata tramite Otsu.
-     * **input:** immagine già nella dimensione stabilita per l'elaborazione
-     * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
-     * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 10 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
-     * **test:** testMainElaboration  
+   funzione, prima possibilità di elaborazione
+   porta l'immagine a livelli di grigi se necessario, elabora tramite equalizzazione dell istogramma e sogliatura immagine con soglia individuata tramite Otsu.
+   * **input:** immagine già nella dimensione stabilita per l'elaborazione
+   * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
+   * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 10 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
+   * **test:** testMainElaboration  
 
 #### testMainElaboration
-     script di test per la funzione elaborationOne
-     vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
-     * **funzione invocate:** readImages, resizeImage, mainElaboration
+   script di test per la funzione elaborationOne
+   vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
+   * **funzione invocate:** readImages, resizeImage, mainElaboration
 
 #### textureElaboration
      funzione, seconda possibilità di elaborazione
@@ -93,7 +93,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 
 #### testFirstHalfPipe
     test che accorpora tutti i test sviluppati fino a questo punto, mostrando in successione tutti i risultati dii ogni test.
-    * **funzioni invocate:**   readImages, resizeImage, elaborationOne, chessDiscover,  straightensChess.
+    * **funzioni invocate:**   readImages, resizeImage, chooseElaboration 
 
 ### isChessBoard 
     funzione che si occupa di stimare una percentuale che indica la probabilità che l'immagine passata sia effivamente una scacchiera.
@@ -109,15 +109,40 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 ### chooseElaboration
     funzione che si occupa di stabilire se la presuntaScacchiera trovata con mainElaboration è effettivamente una scacchier.
     se è una scacchiera ma viene tagliata male, stabilisce la migliore tra le due elaborazioni.
-    * **input:** immagine ridimensionata, scala del ridimensionamento, 
-    * **output:** valore numerico 0<x<1
-    * **parametri:** disco di dimensione 3 (!!! scrivere perchè dopo il ripasso)
-    * **test:** testIsChessboard 
-
-
-
-#### testChooseElaboration 
+    * **input:** immagine ridimensionata, scala del ridimensionamento, immagine originale
+    * **output:** immagine scacchiera 
+    * **parametri:** stiama scacchiera=0.60= stimato sulle prime 20 scacchiere 
 
 
 
   fine prima parte progetto--------------------------------------------------------------------------------
+
+#### fenGenerator
+  funzione che si occupa di creare la stringa FEN partendo dall'immagine raddrizzata della scacchiera. Per individuare i pezzi utilizza la correlazione incrociata normalizata.
+  * **input:** immagine della scacchiera ritagliata e raddrizzata, dataset dei pezzi per il match.
+  * **output:** stringa fen.
+  * **parametri:** 0,6 utilizzato come soglia minima per riconoscere tramite la correlazione incrociata normalizzata
+  * **funzioni invocate:**   findSquare, fenString.
+
+#### findSquare
+  funzione che ritaglia dalla scacchiera le singole celle.
+  * **input:** imaggine scacchiera ritagliata e raddrizzata, valore di debug (0/1).
+  * **output:** singole celle in oggetto di tipo "cell".
+  * **funzione invocata da:** fenGenerator
+
+#### fenString
+  funzione che crea la stringa fen partendo dalla matrice degli indici dei pezzi trovata grazie alla funzione fenGenerator.
+  * **input:** matrice contenente i vari indici dei pezzi.
+  * **output:** stringa fen.
+  * **funzione invocata da:** fenGenerator
+
+#### fenStringApp
+  funzione che crea la stringa fen partendo dalla matrice con le iniziali dei pezzi.
+  * **input:** matrice contenente le iniziali dei pezzi.
+  * **output:** stringa fen.
+  * **funzione invocata da:** fenString
+
+#### testOCR
+  script di test per la parte della creazione della stringa
+  * **funzioni invocate:** readImages, makeDataset, resizeImage, mainElaboration, chessDiscover, straightensChess, fenGenerator.
+    
