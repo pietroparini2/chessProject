@@ -1,5 +1,5 @@
-![image of chess]
-(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/rRG75Yspej1eveaz8/videoblocks-chess-logo-animatiov-in-png-format-alpha-transparency-channel_sa7mlnmkw_thumbnail-full05.png)
+![image of chess] (./foto/doc/titleImage.jpg)
+
 
 # chessProject
 progetto esame elaborazione delle immagini Giugno 2018
