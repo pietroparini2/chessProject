@@ -50,7 +50,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
    * **funzione invocate:** readImages, resizeImage, mainElaboration
 
-###textureElaboration
+### textureElaboration
    funzione, seconda possibilità di elaborazione
    sviluppata in modo complementare alla mainElaboration, per poter individuare le scacchiere la dove c'è la presenza di uno sfondo a texture
    * **input:** immagine già nella dimensione stabilita per l'elaborazione 
