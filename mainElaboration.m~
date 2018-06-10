@@ -10,23 +10,12 @@ function out= mainElaboration (image,testFlag)
     im = adapthisteq (im);
     
     %sottrazione chiusura con immagine a livelli di grigi
-    close= imclose(im, strel ('disk', 6));
-    edge = close - im;
+    edge = imclose(im, strel ('disk', 6)) - im;
     
     %Global image threshold using Otsu's method
     otsu = graythresh(edge);
     
     %binarizzazione immagine  usando la soglia otsu
-    bin = imbinarize (edge, otsu);
-    
-    if(testFlag==1)
-        figure, subplot(1,4,1), imshow (im), title('adapthisteq'), 
-                subplot(1,4,2), imshow (close), title('close'),
-                subplot(1,4,3), imshow (edge), title('close-im'),
-                subplot(1,4,4), imshow (bin), title('otsu binarize');
-                
-    end
-    
-    out=bin;
+    out = imbinarize (edge, otsu);
     
 end

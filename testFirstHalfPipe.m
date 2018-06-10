@@ -1,6 +1,6 @@
 %% find chessboard 
 a=01;
-b=35;
+b=01;
 
 images = readImages(a,b);
 test= zeros(1, (b-a+1));

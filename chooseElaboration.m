@@ -1,6 +1,6 @@
 function chessboardOut = chooseElaboration(imageResized, scale,original)
     
-    firstImageTest = mainElaboration(imageResized);  
+    firstImageTest = mainElaboration(imageResized,0);  
     firstChessBox   = chessDiscover(firstImageTest, scale, original); 
     firstStraightChess= straightensChess(firstChessBox.Image,firstChessBox.ConvexImage);
  
