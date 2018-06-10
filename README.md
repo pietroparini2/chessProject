@@ -44,11 +44,13 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
    * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 10 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
    * **test:** testMainElaboration  
+![imageMainElaboration](imDoc/mainElaboration.png)
 
 #### testMainElaboration
    script di test per la funzione elaborationOne
    vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
    * **funzione invocate:** readImages, resizeImage, mainElaboration
+![imageTestMainElaboration](imDoc/testMainElaboration.png)
 
 ### textureElaboration
    funzione, seconda possibilità di elaborazione
