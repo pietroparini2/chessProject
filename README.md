@@ -115,6 +115,8 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 #### testIsChessboard 
   script di test per la funzione isChessboard
   * **funzioni invocate:**  isChessboard, readImages, resizeImage, elaborationOne, chessDiscover,  straightensChess.
+![imageTestIsChessboard1](imDOC/testIsChessboard1.png)
+![imageTestIsChessboard2](imDOC/testIsChessboard2.png)
 
 ### chooseElaboration
   funzione che si occupa di stabilire se la presuntaScacchiera trovata con mainElaboration è effettivamente una scacchier.

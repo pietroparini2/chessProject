@@ -1,6 +1,6 @@
  %% find chessboard 
-a=30;
-b=40;
+a=17;
+b=17;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
@@ -16,7 +16,7 @@ for i=1:(b-a+1)
     straightChess= straightensChess(chessBox.Image,chessBox.ConvexImage);
     value= isChessboard(straightChess) ;
     
-    figure, imshow(straightChess), title(value);
+    subpl
 end
  
  
