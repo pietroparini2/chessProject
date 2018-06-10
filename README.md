@@ -128,6 +128,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 #### testFirstHalfPipe
   test che accorpora tutti i test sviluppati fino a questo punto, mostrando in successione tutti i risultati dii ogni test.
   * **funzioni invocate:**   readImages, resizeImage, chooseElaboration 
+![imageTestFirstHalfPipe](imDOC/testFirstHalfPipe.png)
 
 
 
