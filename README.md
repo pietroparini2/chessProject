@@ -103,10 +103,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   script di test per la funzione testStraightensChess
   vengono mostrate a video le immagini,() interne alla più grossa boundingbox quadrata ) rispettivamente prima di essere raddrizate e successivamente
   * **funzioni invocate:**   readImages, resizeImage, elaborationOne, chessDiscover,  straightensChess
-
-#### testFirstHalfPipe
-  test che accorpora tutti i test sviluppati fino a questo punto, mostrando in successione tutti i risultati dii ogni test.
-  * **funzioni invocate:**   readImages, resizeImage, chooseElaboration 
+![imageStraightensChess](imDOC/straightensChess.png)
 
 ### isChessBoard 
   funzione che si occupa di stimare una percentuale che indica la probabilità che l'immagine passata sia effivamente una scacchiera.
@@ -125,6 +122,11 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **input:** immagine ridimensionata, scala del ridimensionamento, immagine originale
   * **output:** immagine scacchiera 
   * **parametri:** stiama scacchiera=0.60= stimato sulle prime 20 scacchiere 
+
+#### testFirstHalfPipe
+  test che accorpora tutti i test sviluppati fino a questo punto, mostrando in successione tutti i risultati dii ogni test.
+  * **funzioni invocate:**   readImages, resizeImage, chooseElaboration 
+
 
 
 

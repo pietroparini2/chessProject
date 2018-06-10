@@ -15,6 +15,6 @@ for i=1:(b-a+1)
     
     straightChess= straightensChess(chessBox.Image,chessBox.ConvexImage);
     
-    figure, subplot(1,2,1),imshow(original),
+    figure, subplot(1,2,1),imshow(chessBox.Image),
             subplot(1,2,2),imshow(straightChess);
 end
