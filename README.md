@@ -1,4 +1,4 @@
-![imagechess](imDoc/titleImage.jpg)
+![imagechess](imDOC/titleImage.jpg)
 
 
 # chessProject
