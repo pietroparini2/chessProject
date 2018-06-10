@@ -59,11 +59,15 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    * **output:** immagine in bianco e nero pronta per il riconoscimento dei componenti
    * **parametri:** misure dischi (!!!scrivere il perchè dopo aver fatto il ripasso)
    * **test:** testTextureElaboration
+![imageTextureElaboration](imDOC/textureElaboration.png)
+
  
 #### testTextureElaboration
    script di test per la funzione textureElaboration
    vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
    * **funzione invocate:** readImages, rersizeImage, textureElaboration
+![imageTestTextureElaboration](imDOC/testTextureElaboration.png)
+
 
 ### chessDiscover
    funzione che si occupa di individuare la scacchiera.
