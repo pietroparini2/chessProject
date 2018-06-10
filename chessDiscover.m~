@@ -33,9 +33,9 @@ function out = chessDiscover(bw_image, scale, original_image, testFlag)
     
      if (testFlag==1)
         fh = figure;
-         subplot(1, 3, 1),
-        imshow(bw_image), title ('Immagine preelaborata')
-        subplot(1, 3, 2),
+          subplot(1, 2, 2);
+        imshow(original_image), title ('Immagine originale')
+        subplot(1, 2, 1)
         imshow(bw_image), title ('Quadrati trovati')
         hold on
        
@@ -49,22 +49,6 @@ function out = chessDiscover(bw_image, scale, original_image, testFlag)
             plot ([startX, finalX, finalX, startX, startX], [startY, startY, finalY, finalY, startY],...
                 '-', 'LineWidth', 2); 
         end
-        
-        hold off
-        subplot(1, 3, 3),
-        imshow(bw_image), title ('Quadrato candidato')
-        hold on
-       
-      
-            tmp = equalSides(index(1));
-            startX = tmp.BoundingBox(1);
-            startY = tmp.BoundingBox(2);
-            finalX = startX + tmp.BoundingBox(3);
-            finalY = startY + tmp.BoundingBox(4);
-
-            plot ([startX, finalX, finalX, startX, startX], [startY, startY, finalY, finalY, startY],...
-                '-', 'LineWidth', 2); 
-      
         
         hold off
         waitfor(fh);

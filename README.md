@@ -76,11 +76,15 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    * **output:** la probabile chessboard sotto forma di struct contenente boundingbox, convexarea, convexImage ed scacchiera ritagliata dall'immagine originale
    * **parametri:**  errore di approssimazione dei lati = 0.20= stimato sulle prime 10 immagini, considerando che è solo un primo passaggio il secondo verrà poi implementato (dopo si può un po' abbassare )
    * **test:** testChessDiscover
+![imageChessDiscover](imDOC/chessDiscover.png)
+
 
 #### testChessDiscover
   script di test per la funzione chessDiscover
   vengono caricate, elaborate, e mostratre a video, le immagini originale tagliate e la maschera dell'immagine binaria tagliata
   * **funzione invocate:** readImages, resizeImage, elaborationOne, chessDiscover
+![imageTestChessDiscover](imDOC/testChessDiscover.png)
+
 
 #### cornersMask(aux)
   funzione che si occupa di individuare i 4 corner di una maschera binaria che riceve in input.

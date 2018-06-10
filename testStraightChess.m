@@ -10,8 +10,8 @@ for i=1:(b-a+1)
 
     original = images{i};
     [imageTest, scale] = (resizeImage(original)); % classe di test già sviluppata
-    imageTest = mainElaboration(imageTest);  % classe di test già sviluppata
-    chessBox   = chessDiscover(imageTest, scale, original); % classe di test già sviluppata
+    imageTest = mainElaboration(imageTest,0);  % classe di test già sviluppata
+    chessBox   = chessDiscover(imageTest, scale, original,0); % classe di test già sviluppata
     
     straightChess= straightensChess(chessBox.Image,chessBox.ConvexImage);
     
