@@ -1,4 +1,4 @@
-function [fen, angle] = fenGenerator (chessboard, dataset) 
+function fen = fenGenerator (chessboard, dataset) 
     
     %% chiamata al metodo per estrarre le celle
     cells = findSquare(chessboard, 0);
@@ -47,6 +47,7 @@ function [fen, angle] = fenGenerator (chessboard, dataset)
             cella = cells{i, j}; % cella corrente
             maxCorrValue = zeros(1, 4);
             for k = 3 : 28 % confronto con tutti i pezzi possibili
+                
                 chess = dataset(k).Image; %template corrente
 
                 if correct ~= 1
@@ -69,17 +70,15 @@ function [fen, angle] = fenGenerator (chessboard, dataset)
                         else
                             maxScores(i, j) = maxCorrValue;
                         end
-%                         if maxCorrValue < 0.58
-%                             maxScores(i, j) = 0;
-%                             indici(i,j) = 25;
-%                         end
+%                             if maxCorrValue < 0.
+%                                 maxScores(i, j) = 0;
+%                             end
                     end
                 end
             end
         end
     end
     
-    angle = 0;
     if correct ~= 1
         angle = -90 * (correct-1);
         indici = imrotate(indici, angle);

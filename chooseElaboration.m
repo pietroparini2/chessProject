@@ -10,7 +10,7 @@ function chessboardOut = chooseElaboration(imageResized, scale,original)
         chessboardOut= firstStraightChess;
 
     else
-        secondImageTest = textureElaboration(imageResized,o);  
+        secondImageTest = textureElaboration(imageResized,0);  
         secondChessBox   = chessDiscover(secondImageTest, scale, original,0); 
         secondStraightChess= straightensChess(secondChessBox.Image,secondChessBox.ConvexImage);
 
