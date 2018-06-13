@@ -40,6 +40,11 @@ function [fen, angle] = fenGenerator (chessboard, dataset)
     
     indici = indici(:, :, correct);
     
+    cellW = 0;
+    if correct == 1 || correct == 2
+        cellW = 1;
+    end
+    
     maxScores = zeros(8, 8);
     %% riconoscimento altri pezzi
     for i = 1 : 8
@@ -47,32 +52,35 @@ function [fen, angle] = fenGenerator (chessboard, dataset)
             cella = cells{i, j}; % cella corrente
             maxCorrValue = zeros(1, 4);
             for k = 3 : 28 % confronto con tutti i pezzi possibili
-                chess = dataset(k).Image; %template corrente
+                % se la prima cella è bianca non devo farlo se l
+                if ~(mod(i+j, 2)==0 & cellW == 1 & mod(k, 2)==1) | ~(mod(i+j, 2)==0 & cellW == 0 & mod(k, 2)==0)
+                    chess = dataset(k).Image; %template corrente
 
-                if correct ~= 1
-                    for h = 1 : (correct-1)
-                        chess = rot90(chess);
-                    end
-                end
-                if indici(i, j) ~= 1
-                    correlationOutput = normxcorr2(chess, cella); % ricerca del tamplate
-                    % Find out where the normalized cross correlation image is brightest.
-                    corrValue = max(abs(correlationOutput(:)));
-                    if corrValue > maxCorrValue
-                        maxCorrValue = corrValue;
-                           % Because cross correlation increases the size of the image, 
-                        % we need to shift back to find out where it would be in the original image.
-                        indici(i, j) = k;
-                        maxScores(i, j) = maxCorrValue;
-                        if k == 25 || k == 26 || k == 27 || k == 28 
-                            maxScores(i, j) = 0;
-                        else
-                            maxScores(i, j) = maxCorrValue;
+                    if correct ~= 1
+                        for h = 1 : (correct-1)
+                            chess = rot90(chess);
                         end
-%                         if maxCorrValue < 0.58
-%                             maxScores(i, j) = 0;
-%                             indici(i,j) = 25;
-%                         end
+                    end
+                    if indici(i, j) ~= 1
+                        correlationOutput = normxcorr2(chess, cella); % ricerca del tamplate
+                        % Find out where the normalized cross correlation image is brightest.
+                        corrValue = max(abs(correlationOutput(:)));
+                        if corrValue > maxCorrValue
+                            maxCorrValue = corrValue;
+                               % Because cross correlation increases the size of the image, 
+                            % we need to shift back to find out where it would be in the original image.
+                            indici(i, j) = k;
+                            maxScores(i, j) = maxCorrValue;
+                            if k == 25 || k == 26 || k == 27 || k == 28 
+                                maxScores(i, j) = 0;
+                            else
+                                maxScores(i, j) = maxCorrValue;
+                            end
+    %                         if maxCorrValue < 0.58
+    %                             maxScores(i, j) = 0;
+    %                             indici(i,j) = 25;
+    %                         end
+                        end
                     end
                 end
             end
