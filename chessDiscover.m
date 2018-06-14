@@ -18,8 +18,6 @@ function out = chessDiscover(bw_image, scale, original_image, testFlag)
             equalSides = [equalSides; current];
         end
         
-        % da aggiungere il filtro con le diagonali = per filtrare ancora
-        % equalsSides
     end
     
     [~, index] = sort ([equalSides.ConvexArea]);

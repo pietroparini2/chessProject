@@ -1,5 +1,4 @@
-%% classe di test per la funzione elaborationOne
-
+close all, clear, clc;
 a=1;
 b=1;
 images = readImages(a,b);

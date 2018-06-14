@@ -1,4 +1,4 @@
-%% classe di test per la funzione elaborationOne
+
 
 a=1;
 b=20;

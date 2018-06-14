@@ -1,5 +1,4 @@
-%% calsse di test per la funzione di resize
-%i title vanno quando vogliono loro, non farci caso
+close all, clear, clc;
 
 a=1;
 b=6;

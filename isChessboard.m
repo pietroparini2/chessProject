@@ -12,9 +12,6 @@ function flag = isChessboard(testChessboard)
   testModel=imopen(testModel , strel ('disk', 3));
   testChessboard= imopen(testChessboard , strel ('disk', 3));
   
-  %%da mettere cme debug
-%   figure, subplot(1,2,1), imshow(testModel)
-%           subplot(1,2,2), imshow(testChessboard);
 
  imageResized = imresize(testChessboard, [x,y]);
  
