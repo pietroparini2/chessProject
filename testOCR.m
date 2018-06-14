@@ -3,8 +3,8 @@ close all, clear, clc;
 % in pratica è la classe main poi vedrò di sistemarla
 %% generare stringhe fen
 
-a = 9;
-b = 9;
+a = 62;
+b = 62;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
