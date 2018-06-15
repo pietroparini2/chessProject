@@ -4,12 +4,6 @@
 # chessProject
 progetto esame elaborazione delle immagini Giugno 2018
 
-# to do:
-* aggiungere nella doc le chiamate alle funzioni esterne e studiarsele un attimo
-* ricordarsi che c'è la funzione sauvola messa a caso
-* inserire i test intermedi 
-* implementare un secondo tipo di elaborazione (elaborationTwo) da lanciare se dopo il controllo delle diagonali non rimangono  candidati plausibili
-
 ## Documentazione delle funzioni del progetto
 
 # prima parte progetto
@@ -20,6 +14,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **input** due valori interi che indicano l'intervallo delle immaggini da analizzare
   * **output** void
   * **parametri:** 0
+  * **matlab function:** [im2double!](https://it.mathworks.com/help/matlab/ref/im2double.html?searchHighlight=im2double&s_tid=doc_srchtitle),imread,sprintf
   * **invocata da:** tutte le funzioni di test  
 
 
@@ -29,6 +24,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    * **input:** immagine del dataset di immagini da analizzare
    * **output:** array di due elementi , immagine di nuove dimensione , scala usata per le immagini
    * **parametri:** misura massima degli assi  dell'immagine= 1000+42
+   * **matlab function:** size, imresize
    * **test**: testResize
 
 #### testResize
@@ -40,9 +36,10 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 ### mainElaboration
    funzione, prima possibilità di elaborazione
    porta l'immagine a livelli di grigi se necessario, elabora tramite equalizzazione dell istogramma e sogliatura immagine con soglia individuata tramite Otsu.
-   * **input:** immagine già nella dimensione stabilita per l'elaborazione
+   * **input:** immagine già nella dimensione stabilita per l'elaborazione, boolean per il testing 
    * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
-   * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 10 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
+   * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 20 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
+   * **matlab function:** size, rgb2gray, adapthisteq, imclose, strel, graythresh, imbinarize
    * **test:** testMainElaboration  
 ![imageMainElaboration](imDOC/mainElaboration.png)
 
@@ -58,6 +55,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    * **input:** immagine già nella dimensione stabilita per l'elaborazione 
    * **output:** immagine in bianco e nero pronta per il riconoscimento dei componenti
    * **parametri:** misure dischi (!!!scrivere il perchè dopo aver fatto il ripasso)
+   * **matlab function:** size, rgb2gray, im2double, imopen, imclose, strel, imbinarize
    * **test:** testTextureElaboration
 ![imageTextureElaboration](imDOC/textureElaboration.png)
 
@@ -75,6 +73,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    * **input:** immagine elaborata(per ora da elaborationOne), la scala dell'immagine elaborata(output di resizeImage), immagine originale.
    * **output:** la probabile chessboard sotto forma di struct contenente boundingbox, convexarea, convexImage ed scacchiera ritagliata dall'immagine originale
    * **parametri:**  errore di approssimazione dei lati = 0.20= stimato sulle prime 10 immagini, considerando che è solo un primo passaggio il secondo verrà poi implementato (dopo si può un po' abbassare )
+   * **matlab function:** regionprops, sort, fliplr (guardare anche le funzioni invocate per il test)
    * **test:** testChessDiscover
 ![imageChessDiscover](imDOC/chessDiscover.png)
 
@@ -90,6 +89,8 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   funzione che si occupa di individuare i 4 corner di una maschera binaria che riceve in input.
   * **input:** maschera binaria figura bianco su sfondo nero
   * **output:** matrice con i 4 corner
+  * **parametri:** 0
+  * **matlab function:** find 
   * **invocata da:** straightnessChess, (la userò anche per  controllare le diagonali)
 
 ### straightensChess
@@ -110,6 +111,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **input:** immagine (presunta scacchiera)
   * **output:** valore numerico 0<x<1
   * **parametri:** disco di dimensione 3 (!!! scrivere perchè dopo il ripasso)
+  * **matlab function:** rgb2gray, size, imread, rgb2gray, imbinarize, imopen, imresize, corr2 
   * **test:** testIsChessboard 
 
 #### testIsChessboard 

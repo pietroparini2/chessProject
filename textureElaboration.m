@@ -5,7 +5,6 @@ function out=textureElaboration (image, testFlag)
     end
     
     im= im2double(im);
-   % im = imadjust(im);
    
     im1= imopen(im, strel('disk',7));
     im2= imclose(im1, strel ('disk', 60));

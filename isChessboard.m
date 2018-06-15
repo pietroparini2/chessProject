@@ -18,6 +18,5 @@ function flag = isChessboard(testChessboard)
  R=corr2(testModel,imageResized);
  flag=R;
  
-
 end
 
