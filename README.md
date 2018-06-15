@@ -14,7 +14,9 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **input** due valori interi che indicano l'intervallo delle immaggini da analizzare
   * **output** void
   * **parametri:** 0
-  * **matlab function:** [im2double!](https://it.mathworks.com/help/matlab/ref/im2double.html?searchHighlight=im2double&s_tid=doc_srchtitle),imread,sprintf
+  * **matlab function:** [im2double](https://it.mathworks.com/help/matlab/ref/im2double.html?searchHighlight=im2double&s_tid=doc_srchtitle),
+  [imread](https://it.mathworks.com/help/matlab/ref/imread.html?searchHighlight=imread&s_tid=doc_srchtitle),
+  [sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=sprintf&s_tid=doc_srchtitle)
   * **invocata da:** tutte le funzioni di test  
 
 
@@ -24,7 +26,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    * **input:** immagine del dataset di immagini da analizzare
    * **output:** array di due elementi , immagine di nuove dimensione , scala usata per le immagini
    * **parametri:** misura massima degli assi  dell'immagine= 1000+42
-   * **matlab function:** size, imresize
+   * **matlab function:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [imresize](https://it.mathworks.com/help/matlab/ref/imresize.html?searchHighlight=imresize&s_tid=doc_srchtitle)
    * **test**: testResize
 
 #### testResize
@@ -36,10 +38,10 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 ### mainElaboration
    funzione, prima possibilità di elaborazione
    porta l'immagine a livelli di grigi se necessario, elabora tramite equalizzazione dell istogramma e sogliatura immagine con soglia individuata tramite Otsu.
-   * **input:** immagine già nella dimensione stabilita per l'elaborazione, boolean per il testing 
+   * **input:** immagine già nella dimensione stabilita per l'elaborazione, boolean per il testing
    * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
    * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 20 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
-   * **matlab function:** size, rgb2gray, adapthisteq, imclose, strel, graythresh, imbinarize
+   * **matlab function:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [adapthisteq](https://it.mathworks.com/help/images/ref/adapthisteq.html?searchHighlight=adapthisteq&s_tid=doc_srchtitle), [imclose](https://it.mathworks.com/help/images/ref/imclose.html?searchHighlight=imclose&s_tid=doc_srchtitle), [strel](https://it.mathworks.com/help/images/ref/strel.html?searchHighlight=strel&s_tid=doc_srchtitle), [graythresh](https://it.mathworks.com/help/images/ref/graythresh.html?searchHighlight=graythresh&s_tid=doc_srchtitle), [imbinarize](https://it.mathworks.com/help/images/ref/imbinarize.html?searchHighlight=imbinarize&s_tid=doc_srchtitle)
    * **test:** testMainElaboration  
 ![imageMainElaboration](imDOC/mainElaboration.png)
 
@@ -52,14 +54,16 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 ### textureElaboration
    funzione, seconda possibilità di elaborazione
    sviluppata in modo complementare alla mainElaboration, per poter individuare le scacchiere la dove c'è la presenza di uno sfondo a texture
-   * **input:** immagine già nella dimensione stabilita per l'elaborazione 
+   * **input:** immagine già nella dimensione stabilita per l'elaborazione
    * **output:** immagine in bianco e nero pronta per il riconoscimento dei componenti
    * **parametri:** misure dischi (!!!scrivere il perchè dopo aver fatto il ripasso)
-   * **matlab function:** size, rgb2gray, im2double, imopen, imclose, strel, imbinarize
+   * **matlab function:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [im2double](https://it.mathworks.com/help/matlab/ref/im2double.html?searchHighlight=im2double&s_tid=doc_srchtitle), [imopen](https://it.mathworks.com/help/images/ref/imopen.html?searchHighlight=imopen&s_tid=doc_srchtitle),
+   [imclose](https://it.mathworks.com/help/images/ref/imclose.html?searchHighlight=imclose&s_tid=doc_srchtitle), [strel](https://it.mathworks.com/help/images/ref/strel.html?searchHighlight=strel&s_tid=doc_srchtitle),
+   [imbinarize](https://it.mathworks.com/help/images/ref/imbinarize.html?searchHighlight=imbinarize&s_tid=doc_srchtitle)
    * **test:** testTextureElaboration
 ![imageTextureElaboration](imDOC/textureElaboration.png)
 
- 
+
 #### testTextureElaboration
    script di test per la funzione textureElaboration
    vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
@@ -73,7 +77,9 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    * **input:** immagine elaborata(per ora da elaborationOne), la scala dell'immagine elaborata(output di resizeImage), immagine originale.
    * **output:** la probabile chessboard sotto forma di struct contenente boundingbox, convexarea, convexImage ed scacchiera ritagliata dall'immagine originale
    * **parametri:**  errore di approssimazione dei lati = 0.20= stimato sulle prime 10 immagini, considerando che è solo un primo passaggio il secondo verrà poi implementato (dopo si può un po' abbassare )
-   * **matlab function:** regionprops, sort, fliplr (guardare anche le funzioni invocate per il test)
+   * **matlab function:** [regionprops](https://it.mathworks.com/help/images/ref/regionprops.html?searchHighlight=regionprops&s_tid=doc_srchtitle),
+   [sort](https://it.mathworks.com/help/matlab/ref/sort.html?searchHighlight=sort&s_tid=doc_srchtitle),
+   [fliplr](https://it.mathworks.com/help/matlab/ref/fliplr.html?searchHighlight=fliplr&s_tid=doc_srchtitle) (guardare anche le funzioni invocate per il test)
    * **test:** testChessDiscover
 ![imageChessDiscover](imDOC/chessDiscover.png)
 
@@ -90,7 +96,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **input:** maschera binaria figura bianco su sfondo nero
   * **output:** matrice con i 4 corner
   * **parametri:** 0
-  * **matlab function:** find 
+  * **matlab function:** [find](https://it.mathworks.com/help/matlab/ref/find.html?searchHighlight=find&s_tid=doc_srchtitle)
   * **invocata da:** straightnessChess, (la userò anche per  controllare le diagonali)
 
 ### straightensChess
@@ -106,15 +112,21 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **funzioni invocate:**   readImages, resizeImage, elaborationOne, chessDiscover,  straightensChess
 ![imageStraightensChess](imDOC/straightensChess.png)
 
-### isChessBoard 
+### isChessBoard
   funzione che si occupa di stimare una percentuale che indica la probabilità che l'immagine passata sia effivamente una scacchiera.
   * **input:** immagine (presunta scacchiera)
   * **output:** valore numerico 0<x<1
   * **parametri:** disco di dimensione 3 (!!! scrivere perchè dopo il ripasso)
-  * **matlab function:** rgb2gray, size, imread, rgb2gray, imbinarize, imopen, imresize, corr2 
-  * **test:** testIsChessboard 
+  * **matlab function:** [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle),
+  [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle),
+  [imread](https://it.mathworks.com/help/matlab/ref/imread.html?searchHighlight=imread&s_tid=doc_srchtitle),
+  [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle),
+  [imbinarize](https://it.mathworks.com/help/images/ref/imbinarize.html?searchHighlight=imbinarize&s_tid=doc_srchtitle), [imopen](https://it.mathworks.com/help/images/ref/imopen.html?searchHighlight=imopen&s_tid=doc_srchtitle),
+  [imresize](https://it.mathworks.com/help/matlab/ref/imresize.html?searchHighlight=imresize&s_tid=doc_srchtitle),
+  [corr2](https://it.mathworks.com/help/images/ref/corr2.html?searchHighlight=corr2&s_tid=doc_srchtitle)
+  * **test:** testIsChessboard
 
-#### testIsChessboard 
+#### testIsChessboard
   script di test per la funzione isChessboard
   * **funzioni invocate:**  isChessboard, readImages, resizeImage, elaborationOne, chessDiscover,  straightensChess.
 ![imageTestIsChessboard1](imDOC/testIsChessboard1.png)
@@ -124,12 +136,12 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   funzione che si occupa di stabilire se la presuntaScacchiera trovata con mainElaboration è effettivamente una scacchier.
   se è una scacchiera ma viene tagliata male, stabilisce la migliore tra le due elaborazioni.
   * **input:** immagine ridimensionata, scala del ridimensionamento, immagine originale
-  * **output:** immagine scacchiera 
-  * **parametri:** stiama scacchiera=0.60= stimato sulle prime 20 scacchiere 
+  * **output:** immagine scacchiera
+  * **parametri:** stiama scacchiera=0.60= stimato sulle prime 20 scacchiere
 
 #### testFirstHalfPipe
   test che accorpora tutti i test sviluppati fino a questo punto, mostrando in successione tutti i risultati dii ogni test.
-  * **funzioni invocate:**   readImages, resizeImage, chooseElaboration 
+  * **funzioni invocate:**   readImages, resizeImage, chooseElaboration
 ![imageTestFirstHalfPipe](imDOC/testFirstHalfPipe.png)
 
 
