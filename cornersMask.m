@@ -1,6 +1,8 @@
 function out = cornersMask(mask)
-[y,x] = find(mask); % riga = y column = x
-    [~,loc] = min(y+x); %posizione della somma minima
+% riga = y column = x
+[y,x] = find(mask); 
+    %posizione della somma minima
+    [~,loc] = min(y+x); 
     C = [x(loc),y(loc)]; 
     [~,loc] = min(y-x);
     C(2,:) = [x(loc),y(loc)];

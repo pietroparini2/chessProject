@@ -1,6 +1,6 @@
 close all, clear, clc;
-a=36;
-b=36;
+a=1;
+b=1;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
@@ -9,8 +9,9 @@ test= zeros(1, (b-a+1));
 for i=1:(b-a+1)
 
     original = images{i};
-    [imageTest, scale] = (resizeImage(original)); % classe di test già sviluppata
-    imageTest = mainElaboration(imageTest,0);  % classe di test già sviluppata
+    [imageTest, scale] = (resizeImage(original));
+    %sto provando solo con mainElaboration
+    imageTest = mainElaboration(imageTest,0);  
     
     chessBox   = chessDiscover(imageTest, scale, original, 1);
     

@@ -2,8 +2,6 @@ function out = chessDiscover(bw_image, scale, original_image, testFlag)
         
     equalSides = [];
     errorAprox=0.20;
-    
-    
     infoBox = regionprops(bw_image, 'BoundingBox', 'ConvexArea', 'ConvexImage');
     
     for i = 1:numel(infoBox)
@@ -21,18 +19,22 @@ function out = chessDiscover(bw_image, scale, original_image, testFlag)
     end
     
     [~, index] = sort ([equalSides.ConvexArea]);
-    index = fliplr(index); % lo rovescio
-    
+    index = fliplr(index);
     probableChessboard = equalSides(index(1));
-    
-    
     chess = imcrop (original_image, (probableChessboard.BoundingBox(:)) .* scale);
     probableChessboard.Image= chess;
-    
-     if (testFlag==1)
+    %chiamata alla funzione di test che verrà applicata solo se testFlag=1
+    testFunction(testFlag, bw_image,index, equalSides);
+
+    out = probableChessboard;
+end
+
+
+function out = testFunction(testFlag,bw_image, index, equalSides)
+ if (testFlag==1)
         fh = figure;
         subplot(1, 3, 1),
-        imshow(bw_image), title ('Immagine preelaborata')
+        imshow(bw_image), title ('Immagine pre-elaborata')
         subplot(1, 3, 2),
         imshow(bw_image), title ('Quadrati trovati')
         hold on
@@ -44,8 +46,7 @@ function out = chessDiscover(bw_image, scale, original_image, testFlag)
             finalX = startX + tmp.BoundingBox(3);
             finalY = startY + tmp.BoundingBox(4);
 
-            plot ([startX, finalX, finalX, startX, startX], [startY, startY, finalY, finalY, startY],...
-                '-', 'LineWidth', 2); 
+            plot ([startX, finalX, finalX, startX, startX], [startY, startY, finalY, finalY, startY],'-', 'LineWidth', 2); 
         end
         
         hold off
@@ -60,13 +61,11 @@ function out = chessDiscover(bw_image, scale, original_image, testFlag)
             finalX = startX + tmp.BoundingBox(3);
             finalY = startY + tmp.BoundingBox(4);
 
-            plot ([startX, finalX, finalX, startX, startX], [startY, startY, finalY, finalY, startY],...
-                '-', 'LineWidth', 2); 
+            plot ([startX, finalX, finalX, startX, startX], [startY, startY, finalY, finalY, startY],'-', 'LineWidth', 2); 
       
         
         hold off
         waitfor(fh);
-     end
-
-    out = probableChessboard;
+ end
+ out=0;
 end
