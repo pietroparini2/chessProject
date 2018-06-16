@@ -1,10 +1,13 @@
 function out  = straightensChess (image, mask)
-    [r, c, ~] = size(mask);
-    image = imresize(image, [r, c]);
-    %image=padarray(image, [5,5]);
-    dim= [442, 442];
+ 
+    
+     dim= [442, 442];
   
+    mask = imresize(mask, dim);
+    image = imresize(image, dim);
+   
     Corners = cornersMask(mask);
+    
     
     left = mean(Corners([1 4],1));
     right = mean(Corners([2 3],1));
@@ -21,5 +24,5 @@ function out  = straightensChess (image, mask)
    
     prova= imcrop (transformImage, (chessBoard(1).BoundingBox(:)));
     
-    out= imresize(prova, dim);
+    out= prova;
 end

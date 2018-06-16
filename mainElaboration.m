@@ -18,6 +18,7 @@ function out= mainElaboration (image,testFlag)
     
     %binarizzazione immagine  usando la soglia otsu
     bin = imbinarize (edge, otsu);
+
     
     if(testFlag==1)
         figure, subplot(1,4,1), imshow (im), title('adapthisteq'), 

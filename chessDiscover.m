@@ -31,7 +31,7 @@ function out = chessDiscover(bw_image, scale, original_image, testFlag)
     
      if (testFlag==1)
         fh = figure;
-         subplot(1, 3, 1),
+        subplot(1, 3, 1),
         imshow(bw_image), title ('Immagine preelaborata')
         subplot(1, 3, 2),
         imshow(bw_image), title ('Quadrati trovati')
