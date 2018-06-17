@@ -17,5 +17,5 @@ function out  = straightensChess (image, mask)
     chessBoard = regionprops(tranformMask, 'boundingBox');
     prova= imcrop (transformImage, (chessBoard(1).BoundingBox(:)));
     
-    out= prova;
+    out= imresize(prova,dim);
 end

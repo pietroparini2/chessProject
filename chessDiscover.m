@@ -1,8 +1,8 @@
-function out = chessDiscover(bw_image, scale, original_image, testFlag)
+function out = chessDiscover(bwImage, scale, original_image, testFlag)
         
     equalSides = [];
-    errorAprox=0.20;
-    infoBox = regionprops(bw_image, 'BoundingBox', 'ConvexArea', 'ConvexImage');
+    errorAprox=0.18;
+    infoBox = regionprops(bwImage, 'BoundingBox', 'ConvexArea', 'ConvexImage');
     
     for i = 1:numel(infoBox)
         width = infoBox(i).BoundingBox(3);
@@ -24,48 +24,48 @@ function out = chessDiscover(bw_image, scale, original_image, testFlag)
     chess = imcrop (original_image, (probableChessboard.BoundingBox(:)) .* scale);
     probableChessboard.Image= chess;
     %chiamata alla funzione di test che verrà applicata solo se testFlag=1
-    testFunction(testFlag, bw_image,index, equalSides);
+    testFunction(testFlag, bwImage,index, equalSides);
 
     out = probableChessboard;
 end
 
 
-function out = testFunction(testFlag,bw_image, index, equalSides)
+function out = testFunction(testFlag,bwImage, index, equalSides)
  if (testFlag==1)
-        fh = figure;
+        output = figure;
         subplot(1, 3, 1),
-        imshow(bw_image), title ('Immagine pre-elaborata')
+        imshow(bwImage), title ('Immagine pre-elaborata')
         subplot(1, 3, 2),
-        imshow(bw_image), title ('Quadrati trovati')
+        imshow(bwImage), title ('Quadrati trovati')
         hold on
        
-        for i = 1 : numel (index)
-            tmp = equalSides(index(i));
-            startX = tmp.BoundingBox(1);
-            startY = tmp.BoundingBox(2);
-            finalX = startX + tmp.BoundingBox(3);
-            finalY = startY + tmp.BoundingBox(4);
+        for i = 1 : numel(index)
+            temp = equalSides(index(i));
+            up = temp.BoundingBox(1);
+            left = temp.BoundingBox(2);
+            bottom = up + temp.BoundingBox(3);
+            right = left + temp.BoundingBox(4);
 
-            plot ([startX, finalX, finalX, startX, startX], [startY, startY, finalY, finalY, startY],'-', 'LineWidth', 2); 
+            plot ([up, bottom, bottom, up, up], [left, left, right, right, left],'-', 'LineWidth', 2); 
         end
         
         hold off
         subplot(1, 3, 3),
-        imshow(bw_image), title ('Quadrato candidato')
+        imshow(bwImage), title ('Quadrato candidato')
         hold on
        
       
-            tmp = equalSides(index(1));
-            startX = tmp.BoundingBox(1);
-            startY = tmp.BoundingBox(2);
-            finalX = startX + tmp.BoundingBox(3);
-            finalY = startY + tmp.BoundingBox(4);
+            temp = equalSides(index(1));
+            up = temp.BoundingBox(1);
+            left = temp.BoundingBox(2);
+            bottom = up + temp.BoundingBox(3);
+            right = left + temp.BoundingBox(4);
 
-            plot ([startX, finalX, finalX, startX, startX], [startY, startY, finalY, finalY, startY],'-', 'LineWidth', 2); 
+            plot ([up, bottom, bottom, up, up], [left, left, right, right, left],'-', 'LineWidth', 2); 
       
         
         hold off
-        waitfor(fh);
+        waitfor(output);
  end
  out=0;
 end
