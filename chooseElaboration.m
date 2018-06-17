@@ -1,16 +1,16 @@
-function chessboardOut = chooseElaboration(imageResized, scale,original)
-    
-    firstImageTest = mainElaboration(imageResized,0);  
+function [chessboardOut,choose] = chooseElaboration(imageResized, scale,original)
+    firstImageTest = primaryElaboration(imageResized,0);  
     firstChessBox   = chessDiscover(firstImageTest, scale, original,0); 
     firstStraightChess= straightensChess(firstChessBox.Image,firstChessBox.ConvexImage);
  
     firstEstimateValue = abs(isChessboard(firstStraightChess));
 
-    if(firstEstimateValue > 0.60)
-        chessboardOut= firstStraightChess;
-
+    if(firstEstimateValue > 0.50)
+        chessboardOut=firstStraightChess;
+        choose=1;
+        
     else
-        secondImageTest = textureElaboration(imageResized,0);  
+        secondImageTest = secondaryElaboration(imageResized,0);  
         secondChessBox   = chessDiscover(secondImageTest, scale, original,0); 
         secondStraightChess= straightensChess(secondChessBox.Image,secondChessBox.ConvexImage);
 
@@ -18,8 +18,10 @@ function chessboardOut = chooseElaboration(imageResized, scale,original)
 
         if(firstEstimateValue > secondEstimateValue)
             chessboardOut= firstStraightChess;
+            choose=1;
         else
             chessboardOut = secondStraightChess;
+            choose=2;
         end
 
     end

@@ -5,8 +5,6 @@ b=6;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
-
-
 for i=1:(b-a+1)
 
     imageTest=images{i};

@@ -9,7 +9,7 @@ for i=1:(b-a+1)
     original = images{i};
     [imageTest, scale] = (resizeImage(original));
     %testata con mainElaboration
-    imageTest = mainElaboration(imageTest,0); 
+    imageTest = primaryElaboration(imageTest,0); 
     
     chessBox   = chessDiscover(imageTest, scale, original,0);
     straightChess= straightensChess(chessBox.Image,chessBox.ConvexImage);

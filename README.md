@@ -10,19 +10,20 @@ progetto esame elaborazione delle immagini Giugno 2018
 La prima parte del progetto si occupa di estrarre dall'immagine originale la scacchiera.
 
 #### readImages(aux)
-  funzione che carica le immagini nell'intervallo specificato
+  funzione che carica le immagini nell'intervallo specificato, trasforma in double
   * **input** due valori interi che indicano l'intervallo delle immaggini da analizzare
   * **output** void
   * **parametri:** 0
   * **matlab functions:** [im2double](https://it.mathworks.com/help/matlab/ref/im2double.html?searchHighlight=im2double&s_tid=doc_srchtitle),
   [imread](https://it.mathworks.com/help/matlab/ref/imread.html?searchHighlight=imread&s_tid=doc_srchtitle),
   [sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=sprintf&s_tid=doc_srchtitle)
-  * **invocata da:** tutte le funzioni di test  
+  * **invocata da:** tutti gli script di test, script main
 
 
 ### resizeImage
    funzione che si occupa di fare una resize dell'immagine in modo da rendere più veloce e più scalabile tutta la computazione, e di lavorare in un formato standardizzato.
-   diminuisce tutte le immagini a un massimo di dimensioni dei 2 lati di 1042 px tenendo le proporzioni originali. (42 -->numero perfetto)
+   diminuisce tutte le immagini a un massimo di dimensioni dei 2 lati di 1042 px tenendo le proporzioni originali.
+   importante che imresize mantiene le proporzioni
    * **input:** immagine del dataset di immagini da analizzare
    * **output:** array di due elementi , immagine di nuove dimensione , scala usata per le immagini
    * **parametri:** misura massima degli assi  dell'immagine= 1000+42
@@ -30,46 +31,46 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
     [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [imresize](https://it.mathworks.com/help/matlab/ref/imresize.html?searchHighlight=imresize&s_tid=doc_srchtitle)
    * **test**: testResize
 
-#### testResize
+#### testResizeImage
    script di  test per la funzione resize
    vengono salvate in variabili separate le dimensioni dell'immagine originale, immagine resized e scala
-   in un array boolean test viene verificato stia funzionando correttasmente la 'scalata' di tutte le immagini tramite il calcolo inverso
+   in un array boolean test viene verificato stia funzionando correttasmente la 'scalata' di tutte le immagini tramite il calcolo inverso.
    * **funzioni invocate:** readImages
 
-### mainElaboration
-   funzione, prima possibilità di elaborazione
-   porta l'immagine a livelli di grigi se necessario, elabora tramite equalizzazione dell istogramma e sogliatura immagine con soglia individuata tramite Otsu.
-   * **input:** immagine già nella dimensione stabilita per l'elaborazione, boolean per il testing
-   * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
-   * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 20 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
-   * **matlab functions:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [adapthisteq](https://it.mathworks.com/help/images/ref/adapthisteq.html?searchHighlight=adapthisteq&s_tid=doc_srchtitle), [imclose](https://it.mathworks.com/help/images/ref/imclose.html?searchHighlight=imclose&s_tid=doc_srchtitle), [strel](https://it.mathworks.com/help/images/ref/strel.html?searchHighlight=strel&s_tid=doc_srchtitle), [graythresh](https://it.mathworks.com/help/images/ref/graythresh.html?searchHighlight=graythresh&s_tid=doc_srchtitle), [imbinarize](https://it.mathworks.com/help/images/ref/imbinarize.html?searchHighlight=imbinarize&s_tid=doc_srchtitle)
-   * **test:** testMainElaboration  
-![imageMainElaboration](imDOC/mainElaboration.png)
-
-#### testMainElaboration
-   script di test per la funzione elaborationOne
-   vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
-   * **funzione invocate:** readImages, resizeImage, mainElaboration
-![imageTestMainElaboration](imDOC/testMainElaboration.png)
-
-### textureElaboration
+### primaryElaboration
    funzione, seconda possibilità di elaborazione
-   sviluppata in modo complementare alla mainElaboration, per poter individuare le scacchiere la dove c'è la presenza di uno sfondo a texture
+   sviluppata in modo complementare alla secondaryElaboration, per poter individuare le scacchiere la dove c'è la presenza di uno sfondo a texture
    * **input:** immagine già nella dimensione stabilita per l'elaborazione
    * **output:** immagine in bianco e nero pronta per il riconoscimento dei componenti
    * **parametri:** misure dischi (!!!scrivere il perchè dopo aver fatto il ripasso)
    * **matlab functions:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [im2double](https://it.mathworks.com/help/matlab/ref/im2double.html?searchHighlight=im2double&s_tid=doc_srchtitle), [imopen](https://it.mathworks.com/help/images/ref/imopen.html?searchHighlight=imopen&s_tid=doc_srchtitle),
    [imclose](https://it.mathworks.com/help/images/ref/imclose.html?searchHighlight=imclose&s_tid=doc_srchtitle), [strel](https://it.mathworks.com/help/images/ref/strel.html?searchHighlight=strel&s_tid=doc_srchtitle),
    [imbinarize](https://it.mathworks.com/help/images/ref/imbinarize.html?searchHighlight=imbinarize&s_tid=doc_srchtitle)
-   * **test:** testTextureElaboration
+   * **test:** testPrimaryElaboration
 ![imageTextureElaboration](imDOC/textureElaboration.png)
 
 
-#### testTextureElaboration
-   script di test per la funzione textureElaboration
+#### testPrimaryElaboration
+   script di test per la funzione primaryElaboration
    vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
    * **funzione invocate:** readImages, rersizeImage, textureElaboration
 ![imageTestTextureElaboration](imDOC/testTextureElaboration.png)
+
+### secondaryElaboration
+   funzione, prima possibilità di elaborazione
+   porta l'immagine a livelli di grigi se necessario, elabora tramite equalizzazione dell istogramma e sogliatura immagine con soglia individuata tramite Otsu.
+   * **input:** immagine già nella dimensione stabilita per l'elaborazione, boolean per il testing
+   * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
+   * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 20 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
+   * **matlab functions:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [adapthisteq](https://it.mathworks.com/help/images/ref/adapthisteq.html?searchHighlight=adapthisteq&s_tid=doc_srchtitle), [imclose](https://it.mathworks.com/help/images/ref/imclose.html?searchHighlight=imclose&s_tid=doc_srchtitle), [strel](https://it.mathworks.com/help/images/ref/strel.html?searchHighlight=strel&s_tid=doc_srchtitle), [graythresh](https://it.mathworks.com/help/images/ref/graythresh.html?searchHighlight=graythresh&s_tid=doc_srchtitle), [imbinarize](https://it.mathworks.com/help/images/ref/imbinarize.html?searchHighlight=imbinarize&s_tid=doc_srchtitle)
+   * **test:** testSecondaryElaboration  
+![imageMainElaboration](imDOC/secondaryElaboration.png)
+
+#### testSecondaryElaboration
+   script di test per la funzione secondaryElaboration
+   vengono caricate, elaborate, e mostratre a video, le immagini originali e quelle elaboborate
+   * **funzione invocate:** readImages, resizeImage, secondaryElaboration
+![imageTestMainElaboration](imDOC/testMainElaboration.png)
 
 
 ### chessDiscover
@@ -140,7 +141,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 ![imageTestIsChessboard2](imDOC/testIsChessboard2.png)
 
 ### chooseElaboration
-  funzione che si occupa di stabilire se la presuntaScacchiera trovata con mainElaboration è effettivamente una scacchier.
+  funzione che si occupa di stabilire se la presuntaScacchiera trovata con secondaryElaboration è effettivamente una scacchier.
   se è una scacchiera ma viene tagliata male, stabilisce la migliore tra le due elaborazioni.
   * **input:** immagine ridimensionata, scala del ridimensionamento, immagine originale
   * **output:** immagine scacchiera
@@ -183,7 +184,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 
 #### testOCR
   script di test per la parte della creazione della stringa
-  * **funzioni invocate:** readImages, makeDataset, resizeImage, mainElaboration, chessDiscover, straightensChess, fenGenerator.
+  * **funzioni invocate:** readImages, makeDataset, resizeImage, secondaryElaboration, chessDiscover, straightensChess, fenGenerator.
 
 stringhe FEN da controllare:
     [8/8/4p2Q/2K1p3/4k3/2p2r2/5RRp/7B]
