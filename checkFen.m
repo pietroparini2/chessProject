@@ -1,4 +1,4 @@
-function risultato = controllFen(fen)
+function risultato = checkFen(fen)
     
     correctFen = load('correctFen.mat');
     correctFen = correctFen.correctFen;
