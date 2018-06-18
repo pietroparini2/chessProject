@@ -1,19 +1,15 @@
 function risultato = checkFen(fen)
     
+    %% caricamento stringhe fen corrette
     correctFen = load('correctFen.mat');
     correctFen = correctFen.correctFen;
     
-    x = length(fen);
-    risultato = zeros(1, x);
-    
-    for i = 1 : x
-        currentString = fen{i};
-        correct = 0;
-        
-        app = union(currentString, correctFen);
-        if length(app) == 8
-            correct = 1;
-        end
-        risultato(1, i) = correct;
+    %% controllo se esiste una stringa uguale
+    correct = 0;
+
+    app = union(fen, correctFen);
+    if length(app) == 8
+        correct = 1;
     end
+    risultato = correct;
 end
