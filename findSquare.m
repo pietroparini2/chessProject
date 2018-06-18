@@ -1,6 +1,6 @@
 function cells = findSquare(image, debug)
     [m, n, ~] = size(image);
-    lato = m/8;
+    lato = floor(m/8);
     cells = cell(8,8);
     y = 1;
     for i=1:8

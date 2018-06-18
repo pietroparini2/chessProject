@@ -41,7 +41,7 @@ function [fen, angle] = fenGenerator (chessboard, dataset)
     indici = indici(:, :, correct);
     
     cellW = 0;
-    if correct == 1 || correct == 2
+    if correct == 1 || correct == 3
         cellW = 1;
     end
     
@@ -51,67 +51,106 @@ function [fen, angle] = fenGenerator (chessboard, dataset)
         for j = 1 : 8
             cella = cells{i, j}; % cella corrente
             maxCorrValue = zeros(1, 4);
-            for k = 3 : 28 % confronto con tutti i pezzi possibili
-                % se la prima cella Ã¨ bianca non devo farlo se l
-                if ~(mod(i+j, 2)==0 & cellW == 1 & mod(k, 2)==1) | ~(mod(i+j, 2)==0 & cellW == 0 & mod(k, 2)==0)
+            
+            if indici(i, j) ~= 1
+                for k = 3 : 32
                     chess = dataset(k).Image; %template corrente
-
+                    
+                    %giro il template nella direzione giusta
                     if correct ~= 1
                         for h = 1 : (correct-1)
                             chess = rot90(chess);
                         end
                     end
-                    if indici(i, j) ~= 1
-                        correlationOutput = normxcorr2(chess, cella); % ricerca del tamplate
-                        % Find out where the normalized cross correlation image is brightest.
-                        corrValue = max(abs(correlationOutput(:)));
-                        if corrValue > maxCorrValue
-                            maxCorrValue = corrValue;
-                               % Because cross correlation increases the size of the image, 
-                            % we need to shift back to find out where it would be in the original image.
-                            indici(i, j) = k;
+                    
+                    % calcolo la correlazione con il template corrente
+                    correlationOutput = normxcorr2(chess, cella);
+                    % Cerco nell'immagine dove la correlazioine normalizzata è piu forte
+                    corrValue = max(abs(correlationOutput(:)));
+                    if corrValue > maxCorrValue
+                        maxCorrValue = corrValue;
+                        indici(i, j) = k;
+                        maxScores(i, j) = maxCorrValue;
+                        if k == 17 || k == 18 || k == 31 || k == 32 
+                            maxScores(i, j) = 0;
+                        else
                             maxScores(i, j) = maxCorrValue;
-                            if k == 25 || k == 26 || k == 27 || k == 28 
-                                maxScores(i, j) = 0;
-                            else
-                                maxScores(i, j) = maxCorrValue;
-                            end
-    %                         if maxCorrValue < 0.58
-    %                             maxScores(i, j) = 0;
-    %                             indici(i,j) = 25;
-    %                         end
                         end
                     end
                 end
             end
+            
+%             if cellW == 0 && indici(i, j) ~= 1
+%                 for k = 3 : 18
+%                     chess = dataset(k).Image; %template corrente
+%                     
+%                     %giro il template nella direzione giusta
+%                     if correct ~= 1
+%                         for h = 1 : (correct-1)
+%                             chess = rot90(chess);
+%                         end
+%                     end
+%                     
+%                     % calcolo la correlazione con il template corrente
+%                     correlationOutput = normxcorr2(chess, cella);
+%                     % Cerco nell'immagine dove la correlazioine normalizzata è piu forte
+%                     corrValue = max(abs(correlationOutput(:)));
+%                     if corrValue > maxCorrValue
+%                         maxCorrValue = corrValue;
+%                         indici(i, j) = k;
+%                         maxScores(i, j) = maxCorrValue;
+%                         if k == 17 || k == 18 || k == 31 || k == 32 
+%                             maxScores(i, j) = 0;
+%                         else
+%                             maxScores(i, j) = maxCorrValue;
+%                         end
+%                     end
+%                 end
+%             else
+%                 if indici(i, j) ~= 1 && cellW == 1
+%                     for k = 19 : 32
+%                         chess = dataset(k).Image; %template corrente
+% 
+%                         %giro il template nella direzione giusta
+%                         if correct ~= 1
+%                             for h = 1 : (correct-1)
+%                                 chess = rot90(chess);
+%                             end
+%                         end
+% 
+%                         % calcolo la correlazione con il template corrente
+%                         correlationOutput = normxcorr2(chess, cella);
+%                         % Cerco nell'immagine dove la correlazioine normalizzata è piu forte
+%                         corrValue = max(abs(correlationOutput(:)));
+%                         if corrValue > maxCorrValue
+%                             maxCorrValue = corrValue;
+%                             indici(i, j) = k;
+%                             maxScores(i, j) = maxCorrValue;
+%                             if k == 17 || k == 18 || k == 31 || k == 32 
+%                                 maxScores(i, j) = 0;
+%                             else
+%                                 maxScores(i, j) = maxCorrValue;
+%                             end
+%                         end
+%                     end
+%                 end
+%             end
         end
     end
+    
+    %                         if maxCorrValue < 0.58
+    %                             maxScores(i, j) = 0;
+    %                             indici(i,j) = 25;
+    %                         end
     
     angle = 0;
     if correct ~= 1
         angle = -90 * (correct-1);
         indici = imrotate(indici, angle);
     end
-
-%     punteggio(1) = sum(sum(scores(:, :, 1)));  %0
-%     punteggio(2) = sum(sum(scores(:, :, 2)));  %90
-%     punteggio(3) = sum(sum(scores(:, :, 3)));  %180
-%     punteggio(4) = sum(sum(scores(:, :, 4)));  %270
-% 
-%     [m, rotazione] = max(punteggio);
-%     
-%     %% aggiussto la matrice degli indici se la scacchiera Ã¨ girata
-%     indici = indici(:, :, rotazione);
-%     if rotazione > 1
-%         angolo = -90 * (rotazione - 1);
-%         indici = imrotate(indici, angolo);
-%     end
-            
     
     %% chiamata della funzione che compone la stringa fen
     fen = fenSting(indici);
-    
-    
     
     
     
