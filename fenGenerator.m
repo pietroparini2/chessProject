@@ -108,6 +108,8 @@ function [fen, angle] = fenGenerator (chessboard, pieces, piecesB)
 %                             end
 %                         end
 %                     end
+
+
                 end                
             end
             

@@ -43,11 +43,9 @@ for i=1:(b-a+1)
 %     %% per visualizzare scacchiera girata
 %     chessboard = imrotate(chessboard, rotazione);
 %     figure, imshow(chessboard);
-    
+
+    %% per controllare se le scacchiere sono state lette correttamente
     risultati{i} = checkFen(fen{i});
     pOut = sprintf('immagine %d: %d',a+i-1,risultati{i}); %s per stringa
     disp(pOut);
 end
-
-%% per controllare se le scacchiere sono state lette correttamente
-risultati = checkFen(fen);
