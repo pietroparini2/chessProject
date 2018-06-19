@@ -6,10 +6,11 @@ function risultato = checkFen(fen)
     
     %% controllo se esiste una stringa uguale
     correct = 0;
-
+    
     app = union(fen, correctFen);
     if length(app) == 8
         correct = 1;
     end
+        
     risultato = correct;
 end

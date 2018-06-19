@@ -5,13 +5,13 @@ clc
 % in pratica è la classe main poi vedrò di sistemarla
 %% generare stringhe fen
 
-a = 49;
-b = 60;
+a = 1;
+b = 3;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
-if exist('dataset.mat', 'file') == 2
-    pieces = load('dataset.mat');
+if exist('pieces.mat', 'file') == 2
+    pieces = load('pieces.mat');
     pieces = pieces.pieces;
     piecesB = load('piecesB.mat');
     piecesB = piecesB.piecesB;
@@ -23,7 +23,7 @@ end
 
 
 fen = cell(1, b-a+1);
-risultati = zeros(1, b-a+1);
+risultati = cell(1, b-a+1);
 
 for i=1:(b-a+1)
 
@@ -44,8 +44,8 @@ for i=1:(b-a+1)
 %     chessboard = imrotate(chessboard, rotazione);
 %     figure, imshow(chessboard);
     
-    risultati(i) = checkFen(fen{i});
-    pOut = sprintf('immagine %d: %d',i,risultati(i)); %s per stringa
+    risultati{i} = checkFen(fen{i});
+    pOut = sprintf('immagine %d: %d',a+i-1,risultati{i}); %s per stringa
     disp(pOut);
 end
 

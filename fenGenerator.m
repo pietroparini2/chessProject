@@ -54,7 +54,7 @@ function [fen, angle] = fenGenerator (chessboard, pieces, piecesB)
             
             if indici(i, j) ~= 1
                 for k = 3 : 32
-                    chess = pieces{k}; %template corrente
+                    chess = piecesB{k}; %template corrente
                     
                     %giro il template nella direzione giusta
                     if correct ~= 1
@@ -77,71 +77,14 @@ function [fen, angle] = fenGenerator (chessboard, pieces, piecesB)
                             maxScores(i, j) = maxCorrValue;
                         end
                     end
-                end
                 
                 
                 
                 
                 %% prova per migliorare riconoscimento
-                if  maxScores(i, j) < 0.55
-                    for k = 3 : 32
-                        chess = piecesB{k}; %template corrente
-
-                        %giro il template nella direzione giusta
-                        if correct ~= 1
-                            for h = 1 : (correct-1)
-                                chess = rot90(chess);
-                            end
-                        end
-
-                        % calcolo la correlazione con il template corrente
-                        correlationOutput = normxcorr2(chess, cella);
-                        % Cerco nell'immagine dove la correlazioine normalizzata � piu forte
-                        corrValue = max(abs(correlationOutput(:)));
-                        if corrValue > maxCorrValue && corrValue > maxScores(i,j)
-                            maxCorrValue = corrValue;
-                            indici(i, j) = k;
-                            maxScores(i, j) = maxCorrValue;
-                            if k == 17 || k == 18 || k == 31 || k == 32 
-                                maxScores(i, j) = 0;
-                            else
-                                maxScores(i, j) = maxCorrValue;
-                            end
-                        end
-                    end
-                end                
-            end
-            
-%             if cellW == 0 && indici(i, j) ~= 1
-%                 for k = 3 : 18
-%                     chess = dataset(k).Image; %template corrente
-%                     
-%                     %giro il template nella direzione giusta
-%                     if correct ~= 1
-%                         for h = 1 : (correct-1)
-%                             chess = rot90(chess);
-%                         end
-%                     end
-%                     
-%                     % calcolo la correlazione con il template corrente
-%                     correlationOutput = normxcorr2(chess, cella);
-%                     % Cerco nell'immagine dove la correlazioine normalizzata � piu forte
-%                     corrValue = max(abs(correlationOutput(:)));
-%                     if corrValue > maxCorrValue
-%                         maxCorrValue = corrValue;
-%                         indici(i, j) = k;
-%                         maxScores(i, j) = maxCorrValue;
-%                         if k == 17 || k == 18 || k == 31 || k == 32 
-%                             maxScores(i, j) = 0;
-%                         else
-%                             maxScores(i, j) = maxCorrValue;
-%                         end
-%                     end
-%                 end
-%             else
-%                 if indici(i, j) ~= 1 && cellW == 1
-%                     for k = 19 : 32
-%                         chess = dataset(k).Image; %template corrente
+%                 if  maxScores(i, j) < 0.55
+%                     for k = 3 : 32
+%                         chess = piecesB{k}; %template corrente
 % 
 %                         %giro il template nella direzione giusta
 %                         if correct ~= 1
@@ -154,7 +97,7 @@ function [fen, angle] = fenGenerator (chessboard, pieces, piecesB)
 %                         correlationOutput = normxcorr2(chess, cella);
 %                         % Cerco nell'immagine dove la correlazioine normalizzata � piu forte
 %                         corrValue = max(abs(correlationOutput(:)));
-%                         if corrValue > maxCorrValue
+%                         if corrValue > maxCorrValue && corrValue > maxScores(i,j)
 %                             maxCorrValue = corrValue;
 %                             indici(i, j) = k;
 %                             maxScores(i, j) = maxCorrValue;
@@ -165,8 +108,10 @@ function [fen, angle] = fenGenerator (chessboard, pieces, piecesB)
 %                             end
 %                         end
 %                     end
-%                 end
-%             end
+                end                
+            end
+            
+
         end
     end
     
