@@ -6,8 +6,8 @@ clc
 t0 = clock;
 
 %% fase di inizziazione e preparazione
-a = 61;
-b = 64;
+a = 70;
+b = 70;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
