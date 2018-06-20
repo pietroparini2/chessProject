@@ -1,12 +1,13 @@
 close all  
-clear 
+clear
 clc
 
-% in pratica è la classe main poi vedrò di sistemarla
-%% generare stringhe fen
+%% partenza cronometro fase iniziale
+t0 = clock;
 
-a = 1;
-b = 3;
+%% fase di inizziazione e preparazione
+a = 61;
+b = 64;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
@@ -21,12 +22,16 @@ else
     save('piecesB', 'piecesB');
 end
 
-
 fen = cell(1, b-a+1);
 risultati = cell(1, b-a+1);
 
-for i=1:(b-a+1)
+%Stampa tempo 
+t1 = etime(clock,t0);
+fprintf('tempo per fase di inizializzazione %.2f seconds.\n\n', t1);
 
+for i=1:(b-a+1)
+    t0 = clock;
+    
     original = images{i};
     [imageResized, scale] = (resizeImage(original)); % classe di test già sviluppata
     [straightChess, choose]= chooseElaboration(imageResized,scale,original);
@@ -36,16 +41,17 @@ for i=1:(b-a+1)
     k = 7;
     straightChess = straightChess(k+1:end-k,k+1:end-k, :);
     chessboard = imadjust(rgb2gray(straightChess)); %, [0.01 0.6], []
-    
+   
     %% chiamata al metodo
-    [fen{i}, rotazione] = fenGenerator(chessboard, pieces, piecesB);
+    [fen{i}, rotazione, risultati{i}] = fenGenerator(chessboard, pieces, piecesB);
     
-%     %% per visualizzare scacchiera girata
-%     chessboard = imrotate(chessboard, rotazione);
-%     figure, imshow(chessboard);
-
-    %% per controllare se le scacchiere sono state lette correttamente
-    risultati{i} = checkFen(fen{i});
-    pOut = sprintf('immagine %d: %d',a+i-1,risultati{i}); %s per stringa
+    %% per visualizzare scacchiera girata
+    chessboard = imrotate(chessboard, rotazione);
+    figure, imshow(chessboard);        
+    
+    %% stampa posizione risultato e tempo
+    t1 = etime(clock,t0);
+    
+    pOut = sprintf('immagine %d: %.2f - tempo impiegato: %.2f seconds.\n',a+i-1,risultati{i}, t1); %s per stringa
     disp(pOut);
 end

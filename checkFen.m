@@ -1,4 +1,4 @@
-function risultato = checkFen(fen)
+function correct = checkFen(fen)
     
     %% caricamento stringhe fen corrette
     correctFen = load('correctFen.mat');
@@ -11,6 +11,4 @@ function risultato = checkFen(fen)
     if length(app) == 8
         correct = 1;
     end
-        
-    risultato = correct;
 end

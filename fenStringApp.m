@@ -1,5 +1,5 @@
-function out = fenStringApp (indici)
-    out = '';
+function [fen, percentuale] = fenStringApp (indici)
+    fen = '';
     flag = 0;
     for i = 0 : 7
         count = 0;
@@ -12,23 +12,25 @@ function out = fenStringApp (indici)
                     count = 1;
                 else
                     if flag == 1
-                        out = strcat(out, num2str(count), indici(j+(i*8)));
+                        fen = strcat(fen, num2str(count), indici(j+(i*8)));
                         count = 0;
                         flag = 0;
                     else
-                        out = strcat(out, indici(j+(i*8)));
+                        fen = strcat(fen, indici(j+(i*8)));
                     end 
                 end
             end
         end
         if flag == 1
-            out  = strcat(out, num2str(count));
+            fen  = strcat(fen, num2str(count));
             flag = 0;
         end
         if i ~= 7
-            out = strcat(out, '/');
+            fen = strcat(fen, '/');
         end
     end
-    out = strcat(out, ' - 0 1');
     
+    fen = strcat(fen, ' - 0 1');
+    
+    percentuale = checkFen(fen); 
 end
