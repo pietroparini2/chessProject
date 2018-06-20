@@ -10,6 +10,18 @@ function out= secondaryElaboration (image,testFlag)
     edge = close - im;
     otsu = graythresh(edge);
     bin = imbinarize (edge, otsu);
+    %bin= imerode(bin, strel ('disk', 1));
+    
+    %
+    cc = bwconncomp(bin);
+    ccSizeThreshold = 500;%parametro fissato a caso
+    for i = 1 : cc.NumObjects
+      currCC = cc.PixelIdxList{i};
+      if size(currCC, 1) < ccSizeThreshold
+        bin(currCC) = 0;
+      end
+    end
+    %
     testFunction(testFlag,close,im,edge,bin);
     
     out=bin;

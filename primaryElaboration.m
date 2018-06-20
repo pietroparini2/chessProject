@@ -8,6 +8,14 @@ function out=primaryElaboration (image, testFlag)
     im2= imclose(im1, strel ('disk', 60));
     edge = imbinarize(im2 - im);
     
+    cc = bwconncomp(edge);
+    ccSizeThreshold = 500;%parametro fissato a caso
+    for i = 1 : cc.NumObjects
+      currCC = cc.PixelIdxList{i};
+      if size(currCC, 1) < ccSizeThreshold
+        edge(currCC) = 0;
+      end
+    end
     testFunction(testFlag,im,im1,im2,edge);
     
     out=edge;
