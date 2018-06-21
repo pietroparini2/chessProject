@@ -10,6 +10,7 @@ for i=1:(b-a+1)
     [imageTest, scale] = (resizeImage(original));
     %testata con primaryElaboration
     imageTest = primaryElaboration(imageTest,0); 
+    %imageTest = secondaryElaboration(imageTest,0);
     chessBox = chessDiscover(imageTest, scale, original,0);
     straightChess= straightensChess(chessBox.Image,chessBox.ConvexImage);
     value(i)= isChessboard(straightChess) ;
