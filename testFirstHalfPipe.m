@@ -1,17 +1,16 @@
 close all, clear, clc;
-a=48;
-b=70;
-
+a=1;
+b=1;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 elaboration=zeros(1, (b-a+1));
 times=zeros(1, (b-a+1));
 
-
 for i=1:(b-a+1)
 
     original = images{i};
     [imageResized, scale] = (resizeImage(original)); 
+    %controllo i tempi
     t0 = clock;
     [imageTest, choose]= chooseElaboration(imageResized,scale,original);
     t1 = etime(clock,t0);

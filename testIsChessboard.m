@@ -1,6 +1,6 @@
 close all, clear, clc;
-a=39;
-b=39;
+a=1;
+b=1;
 images = readImages(a,b);
 value= zeros(1, (b-a+1));
 

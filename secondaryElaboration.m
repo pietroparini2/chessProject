@@ -12,9 +12,9 @@ function out= secondaryElaboration (image,testFlag)
     bin = imbinarize (edge, otsu);
     
     
-    
+    %algoritmo aggiunto per migliorare i tempi di esecuzione 
     cc = bwconncomp(bin);
-    ccSizeThreshold = 2042;%parametro fissato a caso
+    ccSizeThreshold = 2042;%stimato per non eliminare la scacchiera e non troppo alto da allungare i tempi
     for i = 1 : cc.NumObjects
       currCC = cc.PixelIdxList{i};
       if size(currCC, 1) < ccSizeThreshold
@@ -25,7 +25,6 @@ function out= secondaryElaboration (image,testFlag)
     testFunction(testFlag,close,im,edge,bin);
     
     out=bin;
-    
 end
 
 function out= testFunction(testFlag,close,im,edge,bin)

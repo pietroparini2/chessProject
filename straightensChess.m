@@ -1,5 +1,5 @@
 function out  = straightensChess (image, mask)
-    dim= [442, 442];
+    dim= [442, 442];% 42 ;)
   
     mask = imresize(mask, dim);
     image = imresize(image, dim);
