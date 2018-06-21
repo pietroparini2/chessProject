@@ -1,13 +1,8 @@
-close all  
-clear
-clc
-
-%% partenza cronometro fase iniziale
-t0 = clock;
+clear, clc, close all; 
 
 %% fase di inizziazione e preparazione
-a = 1;
-b = 10;
+a = 11;
+b = 20;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
@@ -23,29 +18,17 @@ fen = cell(1, b-a+1);
 risultati = cell(1, b-a+1);
 t = zeros(1, b-a+1);
 
-%Stampa tempo 
-t1 = etime(clock,t0);
-fprintf('tempo per fase di inizializzazione %.2f seconds.\n\n', t1);
-
-
 for i=1:(b-a+1)
-    
-    
     original = images{i};
+    
+    %% rierca, ritaglio e riaddrizzamento della scacchiera
     [imageResized, scale] = (resizeImage(original)); % classe di test già sviluppata
     [straightChess, choose]= chooseElaboration(imageResized,scale,original);
     
-    %% chiamata al metodo
-    t0 = clock;
+    %% riconoscimento dei pezzi e creazione delle stringhe fen
     [fen{i}, rotazione, risultati{i}] = fenGenerator(straightChess, pieces, a+i-1);
     
-%     %% per visualizzare scacchiera girata
-%     chessboard = imrotate(chessboard, rotazione);
-%     figure, imshow(chessboard);        
-    
-    %% stampa posizione risultato e tempo
-    t(i) = etime(clock,t0);
-    
-    pOut = sprintf('immagine %d: %.2f - tempo impiegato: %.2f seconds.\n',a+i-1,risultati{i}, t(i)); %s per stringa
+    %% stampa dei risultati
+    pOut = sprintf('immagine %d:\n riconosciuta al = %.2f percento \n fen costruita = %s \n',a+i-1,risultati{i}, fen{i}); %s per stringa
     disp(pOut);
 end

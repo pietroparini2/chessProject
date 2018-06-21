@@ -1,4 +1,4 @@
-function  [fen, percentuale] = fenString(indici)
+function  [fen, percentuale] = fenString(indici, nImg)
     indici = reshape(indici', 1, 64);
     
     %% sostituisco gli indici con le lettere corrispondenti ai pezzi
@@ -22,7 +22,7 @@ function  [fen, percentuale] = fenString(indici)
     
     
     
-    [fen, percentuale] = fenStringApp(str);
+    [fen, percentuale] = fenStringApp(str, nImg);
     
     if percentuale == 0
         percentuale = wrongFen(str);

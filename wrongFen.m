@@ -4,12 +4,12 @@ function percentuale = wrongFen(fen)
     extendedFen = load('extendedFen.mat');
     extendedFen = extendedFen.extendedFen;
     maxResult  = 0;
-    for i = 1 : 8
+    for i = 1 : length(extendedFen)
         result = fen == extendedFen{i};
         result = sum(result);
         if result > maxResult
             maxResult = result;
         end
     end
-    percentuale = sum(maxResult)/64; 
+    percentuale = (sum(maxResult)*100)/64; 
 end

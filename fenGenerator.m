@@ -1,5 +1,11 @@
-function [fen, angle, percentuale] = fenGenerator (chessboard, pieces, piecesB) 
-    
+function [fen, angle, percentuale] = fenGenerator (chessboard, pieces, nImg) 
+    %% pre-elaborazione immagine scacchiera ritagliata
+    k = 7;
+    chessboard = chessboard(k+1:end-k,k+1:end-k, :);
+    chessboard = imadjust(rgb2gray(chessboard)); %, [0.01 0.6], []
+
+
+
     %% chiamata al metodo per estrarre le celle
     cells = findSquare(chessboard, 0);
 
@@ -61,10 +67,8 @@ function [fen, angle, percentuale] = fenGenerator (chessboard, pieces, piecesB)
             
             if indici(i, j) ~= 1 
                 for k = 3 : 32
-                    chess = piecesB{k}; %template corrente
-                    
-                    
-                   
+                    chess = pieces{k}; %template corrente
+              
                     % calcolo la correlazione con il template corrente
                     correlationOutput = normxcorr2(chess, cella);
                     % Cerco nell'immagine dove la correlazioine normalizzata � piu forte
@@ -92,34 +96,6 @@ function [fen, angle, percentuale] = fenGenerator (chessboard, pieces, piecesB)
     end
     
     %% chiamata della funzione che compone la stringa fen
-    [fen, percentuale] = fenSting(indici);
+    [fen, percentuale] = fenSting(indici, nImg);
         
-end   
-    
-     %% prova per migliorare riconoscimento
-    %                 if  maxScores(i, j) < 0.55
-    %                     for k = 3 : 32
-    %                         chess = piecesB{k}; %template corrente
-    % 
-    %                         %giro il template nella direzione giusta
-    %                         if correct ~= 1
-    %                             for h = 1 : (correct-1)
-    %                                 chess = rot90(chess);
-    %                             end
-    %                         end
-    % 
-    %                         % calcolo la correlazione con il template corrente
-    %                         correlationOutput = normxcorr2(chess, cella);
-    %                         % Cerco nell'immagine dove la correlazioine normalizzata � piu forte
-    %                         corrValue = max(abs(correlationOutput(:)));
-    %                         if corrValue > maxCorrValue && corrValue > maxScores(i,j)
-    %                             maxCorrValue = corrValue;
-    %                             indici(i, j) = k;
-    %                             maxScores(i, j) = maxCorrValue;
-    %                             if k == 17 || k == 18 || k == 31 || k == 32 
-    %                                 maxScores(i, j) = 0;
-    %                             else
-    %                                 maxScores(i, j) = maxCorrValue;
-    %                             end
-    %                         end
-    %                     end
+end

@@ -1,14 +1,10 @@
-function correct = checkFen(fen)
+function correct = checkFen(fen, i)
     
     %% caricamento stringhe fen corrette
-    correctFen = load('correctFen.mat');
-    correctFen = correctFen.correctFen;
+    strApp = sprintf('./stringheFen/%03d.txt', i); %s per stringa
+    fFen = fopen(strApp);
+    originalFen = fscanf(fFen, '%c');
     
-    %% controllo se esiste una stringa uguale
-    correct = 0;
-    
-    app = union(fen, correctFen);
-    if length(app) == 8
-        correct = 1;
-    end
+    % controllo se sono uguali
+    correct = strcmp(originalFen, fen);
 end

@@ -1,4 +1,4 @@
-function [fen, percentuale] = fenStringApp (indici)
+function [fen, percentuale] = fenStringApp (indici, nImg)
     fen = '';
     flag = 0;
     for i = 0 : 7
@@ -32,5 +32,5 @@ function [fen, percentuale] = fenStringApp (indici)
     
     fen = strcat(fen, ' - 0 1');
     
-    percentuale = checkFen(fen); 
+    percentuale = checkFen(fen, nImg); 
 end
