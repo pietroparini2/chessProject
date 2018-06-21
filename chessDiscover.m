@@ -29,7 +29,7 @@ function out = chessDiscover(bwImage, scale, original_image, testFlag)
     out = probableChessboard;
 end
 
-
+%%funzione chiamata per il debug
 function out = testFunction(testFlag,bwImage, index, equalSides)
  if (testFlag==1)
         output = figure;

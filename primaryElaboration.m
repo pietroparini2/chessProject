@@ -21,6 +21,7 @@ function out=primaryElaboration (image, testFlag)
     out=edge;
 end
 
+%%funzione chiamata per il debug
 function out=testFunction(testFlag,im,im1,im2,edge)
     if(testFlag==1)
         figure, subplot(1,4,1), imshow(im), title('image'),

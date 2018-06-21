@@ -27,6 +27,7 @@ function out= secondaryElaboration (image,testFlag)
     out=bin;
 end
 
+%%funzione chiamata per il debug
 function out= testFunction(testFlag,close,im,edge,bin)
     if(testFlag==1)
             figure, subplot(1,4,1), imshow (im), title('adapthisteq'), 

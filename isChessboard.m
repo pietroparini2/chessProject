@@ -8,7 +8,7 @@ function flag = isChessboard(testChessboard)
  testModel=imbinarize(testModel);
   
  testChessboard=imbinarize(testChessboard);
-  
+ 
  testModel=imopen(testModel , strel ('disk', 3));
  testChessboard= imopen(testChessboard , strel ('disk', 3));
  imageResized = imresize(testChessboard, [x,y]);
