@@ -1,5 +1,5 @@
 close all, clear, clc;
-a=61;
+a=48;
 b=70;
 
 images = readImages(a,b);
@@ -18,9 +18,8 @@ for i=1:(b-a+1)
     fprintf('immagine: %d \n elaborazione usata: %d \n in tempo %.2f seconds.\n\n',i, choose,  t1);
     times(i)=t1;
     elaboration(i)=choose;
-    figure, subplot(1,2,1), imshow(original),
-            subplot(1,2,2), imshow(imageTest),
+     figure, subplot(1,2,1), imshow(original),
+             subplot(1,2,2), imshow(imageTest),
             
 end
-% time= time/(b-a+1);
-% fprintf('media dei tempi di elaborazine: %.2f secondi \n', time);
+
