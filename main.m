@@ -1,8 +1,8 @@
 clear, clc, close all; 
 
 %% fase di inizziazione e preparazione
-a = 11;
-b = 20;
+a = 31;
+b = 40;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 

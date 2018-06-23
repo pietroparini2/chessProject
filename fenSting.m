@@ -25,7 +25,7 @@ function  [fen, percentuale] = fenString(indici, nImg)
     [fen, percentuale] = fenStringApp(str, nImg);
     
     if percentuale == 0
-        percentuale = wrongFen(str);
+        percentuale = wrongFen(str, nImg);
     end  
     
     
