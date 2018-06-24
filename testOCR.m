@@ -6,8 +6,8 @@ clc
 t0 = clock;
 
 %% fase di inizziazione e preparazione
-a = 56;
-b = 56;
+a = 9;
+b = 10;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
@@ -23,29 +23,31 @@ fen = cell(1, b-a+1);
 risultati = cell(1, b-a+1);
 t = zeros(1, b-a+1);
 
-%Stampa tempo 
+%% Stampa tempo fase di inizzializzazione
 t1 = etime(clock,t0);
 fprintf('tempo per fase di inizializzazione %.2f seconds.\n\n', t1);
 
-
 for i=1:(b-a+1)
-    
-    
+    %% chiamata del metodo per estrarre la scacchiera
     original = images{i};
     [imageResized, scale] = (resizeImage(original)); % classe di test già sviluppata
     [straightChess, choose]= chooseElaboration(imageResized,scale,original);
     
-    %% chiamata al metodo
+    %% chiamata al metodo per generare stringa fen
     t0 = clock;
     [fen{i}, rotazione, risultati{i}] = fenGenerator(straightChess, pieces, a+i-1);
-    
-%     %% per visualizzare scacchiera girata
-%     chessboard = imrotate(chessboard, rotazione);
-%     figure, imshow(chessboard);        
-    
-    %% stampa posizione risultato e tempo
     t(i) = etime(clock,t0);
     
-    pOut = sprintf('immagine %d: %.2f - tempo impiegato: %.2f seconds.\n',a+i-1,risultati{i}, t(i)); %s per stringa
-    disp(pOut);
+    %% per visualizzare scacchiera girata correttamente
+    straightChess = imrotate(straightChess, rotazione);
+    figure, imshow(straightChess);
+    
+    %% stampa posizione risultato e tempo
+    if size(risultati{i}, 2) == 1
+        pOut = sprintf('immagine %d:\n  corretta al = %d%% \n  tempo impiegato = %.2f seconds.\n',a+i-1,risultati{i}, t(i)); %s per stringa
+        disp(pOut);
+    else
+        pOut = sprintf('immagine %d:\n  corretta al = %.2f%% \n  tempo impiegato = %.2f seconds.\n  pezzi sbagliati= %s \n',a+i-1,risultati{i}{1}, t(i), risultati{i}{2}); %s per stringa
+        disp(pOut);
+    end 
 end

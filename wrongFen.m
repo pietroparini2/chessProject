@@ -1,24 +1,43 @@
-function percentuale = wrongFen(fen, k)
+function risultato = wrongFen(fen, k)
     strApp = sprintf('./stringheFen/%03d.txt', k);
     fFen = fopen(strApp);
-    originalFen = fscanf(fFen, '%c');
+    fenOriginale = fscanf(fFen, '%c');
     
-    originalFenEx= '';
+    fenOEx= '';
     
-    l = length(originalFen)-6;
+    l = length(fenOriginale)-6;
     for i = 1 : l 
-        num = str2num(originalFen(i));
+        num = str2num(fenOriginale(i));
         if (isempty(num) == 0)
             for j = 1 : num
-                originalFenEx = strcat(originalFenEx, 'a');
+                fenOEx = strcat(fenOEx, 'a');
             end
         else
-            if originalFen(i) ~= '/'
-            originalFenEx = strcat (originalFenEx, originalFen(i));
+            if fenOriginale(i) ~= '/'
+            fenOEx = strcat (fenOEx, fenOriginale(i));
             end
         end
     end
     
-    result = fen == originalFenEx;
-    percentuale = (sum(result)*100)/64; 
+    confronto = fen == fenOEx;
+    
+    risultato{1} = (sum(confronto)*100)/64; 
+    
+    str = '';
+    f = 1;
+    for i = 1 : length(fen)
+        if confronto(i) == 0 && f == 0 
+            app = sprintf(', %s -> %s',fen(i), fenOEx(i));
+            str = strcat(str, app);
+        else
+            if confronto(i) == 0
+            app = sprintf('%s -> %s',fen(i), fenOEx(i));
+            str = strcat(str, app);
+            f = 0;
+            end    
+        end
+            
+            
+    end
+    risultato{2} = str;
 end

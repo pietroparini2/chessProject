@@ -1,10 +1,8 @@
-function [fen, angle, percentuale] = fenGenerator (chessboard, pieces, nImg) 
+function [fen, angle, risultato] = fenGenerator (chessboard, pieces, nImg) 
     %% pre-elaborazione immagine scacchiera ritagliata
     k = 7;
     chessboard = chessboard(k+1:end-k,k+1:end-k, :);
     chessboard = imadjust(rgb2gray(chessboard)); %, [0.01 0.6], []
-
-
 
     %% chiamata al metodo per estrarre le celle
     cells = findSquare(chessboard, 0);
@@ -45,11 +43,6 @@ function [fen, angle, percentuale] = fenGenerator (chessboard, pieces, nImg)
     end
     
     indici = indici(:, :, correct);
-    
-%     cellW = 0;
-%     if correct == 1 || correct == 3
-%         cellW = 1;
-%     end
     
     maxScores = zeros(8, 8);
     %% riconoscimento altri pezzi
@@ -96,6 +89,6 @@ function [fen, angle, percentuale] = fenGenerator (chessboard, pieces, nImg)
     end
     
     %% chiamata della funzione che compone la stringa fen
-    [fen, percentuale] = fenSting(indici, nImg);
+    [fen, risultato] = fenSting(indici, nImg);
         
 end
