@@ -6,10 +6,11 @@ clc
 t0 = clock;
 
 %% fase di inizziazione e preparazione
-a = 9;
+a = 1;
 b = 10;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
+
 
 if exist('pieces.mat', 'file') == 2
     pieces = load('pieces.mat');
@@ -39,9 +40,10 @@ for i=1:(b-a+1)
     t(i) = etime(clock,t0);
     
     %% per visualizzare scacchiera girata correttamente
-    straightChess = imrotate(straightChess, rotazione);
-    figure, imshow(straightChess);
+%     straightChess = imrotate(straightChess, rotazione);
+%     figure, imshow(straightChess);
     
+   
     %% stampa posizione risultato e tempo
     if size(risultati{i}, 2) == 1
         pOut = sprintf('immagine %d:\n  corretta al = %d%% \n  FEN = %s \n  tempo impiegato = %.2f seconds.\n'...
@@ -53,3 +55,6 @@ for i=1:(b-a+1)
         disp(pOut);
     end 
 end
+
+%% creazione matrice di confusione
+    [confMat, f]= confusionMat(fen,a,b);
