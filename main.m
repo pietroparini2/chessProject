@@ -35,10 +35,11 @@ for i=1:(b-a+1)
     
     %% stampa posizione risultato e tempo
     if size(risultati{i}, 2) == 1
-        pOut = sprintf('immagine %d:\n  corretta al = %d%%',a+i-1,risultati{i}); %s per stringa
+        pOut = sprintf('immagine %d:\n  corretta al = %d%%\n  FEN = %s \n', a+i-1, risultati{i}, fen{i}); %s per stringa
         disp(pOut);
     else
-        pOut = sprintf('immagine %d:\n  corretta al = %.2f%% \n  pezzi sbagliati = %s \n',a+i-1,risultati{i}{1}, risultati{i}{2}); %s per stringa
+        pOut = sprintf('immagine %d:\n  corretta al = %.2f%%\n  FEN = %s \n  pezzi sbagliati = %s \n'...
+            ,a+i-1,risultati{i}{1}, fen{i}, risultati{i}{2}); %s per stringa
         disp(pOut);
     end 
 end

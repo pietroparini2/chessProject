@@ -26,7 +26,7 @@ function risultato = wrongFen(fen, k)
     str = '';
     f = 1;
     for i = 1 : length(fen)
-        if confronto(i) == 0 && f == 0 
+        if confronto(i) == 0 && f == 0
             app = sprintf(', %s -> %s',fen(i), fenOEx(i));
             str = strcat(str, app);
         else
