@@ -3,8 +3,8 @@ clear
 clc
 
 %% fase di inizziazione e preparazione
-a = 9;
-b = 10;
+a = 21;
+b = 21;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 

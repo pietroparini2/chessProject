@@ -5,9 +5,9 @@ clc
 %% partenza cronometro fase iniziale
 t0 = clock;
 
-%% fase di inizziazione e preparazione
-a = 1;
-b = 1;
+%% fase di inizzizione e preparazione
+a = 21;
+b = 21;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
@@ -50,7 +50,7 @@ for i=1:(b-a+1)
             , a+i-1, risultati{i}, fen{i}, t(i));
         disp(pOut);
     else
-        pOut = sprintf('immagine %d:\n  corretta al = %.2f%% \n  FEN = %s \n  pezzi sbagliati= %s \n  tempo impiegato = %.2f seconds. \n' ...
+        pOut = sprintf('immagine %d:\n  corretta al = %.2f%% \n  FEN = %s \n  pezzi sbagliati = %s \n  tempo impiegato = %.2f seconds. \n' ...
                      , a+i-1, risultati{i}{1}, fen{i}, risultati{i}{2}, t(i));
         disp(pOut);
     end 

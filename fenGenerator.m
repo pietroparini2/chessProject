@@ -5,7 +5,7 @@ function [fen, angle, risultato] = fenGenerator (chessboard, pieces, nImg)
     chessboard = imadjust(rgb2gray(chessboard)); %, [0.01 0.6], []
     
     %% chiamata al metodo per estrarre le celle
-    cells = extractCells(chessboard, 0);
+    cells = extractCells(chessboard);
 
     scores = zeros(8, 8, 4);
     indici = zeros(8, 8, 4);
