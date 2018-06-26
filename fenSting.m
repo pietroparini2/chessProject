@@ -20,8 +20,6 @@ function  [fen, percentualeR] = fenString(indici, nImg)
     str(indici == 15 | indici == 29) = 'N';
     str(indici == 16 | indici == 30) = 'P';
     
-    
-    
     [fen, percentualeR] = fenStringApp(str, nImg);
     
     if percentualeR == 0

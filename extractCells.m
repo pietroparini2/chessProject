@@ -1,4 +1,4 @@
-function cells = extractCells(image, debug)
+function cells = extractCells(image)
     [m, n, ~] = size(image);
     lato = floor(m/8);
     cells = cell(8,8);
@@ -34,17 +34,6 @@ function cells = extractCells(image, debug)
             x = x + lato;
         end
         y = y + lato;
-    end
-    
-    %% debug
-    if debug == 1
-        for i = 7 : 8
-            for j = 7 : 8
-                h = figure;
-                imshow(cells{i, j}); title(sprintf('C: %d, %d', i, j));
-                waitfor(h);
-            end
-        end
     end
 end
 

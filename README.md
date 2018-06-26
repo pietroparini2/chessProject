@@ -173,34 +173,33 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   fine prima parte progetto--------------------------------------------------------------------------------
 
 #### fenGenerator
-  funzione che si occupa di creare la stringa FEN partendo dall'immagine raddrizzata della scacchiera. Per individuare i pezzi utilizza la correlazione incrociata normalizata.
-  * **input:** immagine della scacchiera ritagliata e raddrizzata, dataset dei pezzi per il match, n° immagine da analizzare.
-  * **output:** stringa fen, angolo di rotazione della scacchiera, percentuale di riconoscimento.
-  * **parametri:** 0,6 utilizzato come soglia minima per riconoscere tramite la correlazione incrociata normalizzata
+  funzione che si occupa di creare la stringa FEN partendo dall'immagine ritagliata e raddrizzata della scacchiera. Per individuare i pezzi utilizza la correlazione incrociata normalizata. Questa funzione crea la matrice degli indici che passa poi alla funzione fenString che restituirà la stringa FEN.
+  * **input:** immagine della scacchiera ritagliata e raddrizzata, dataset dei pezzi per il match ed il n° dell'immagine che si sta analizzando.
+  * **output:** stringa FEN, angolo di rotazione della scacchiera, percentuale di riconoscimento.
   * **funzioni invocate:** findSquare, fenString.
   * **funzioni MATLAB invocate:**
-  [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?s_tid=doc_ta)
-  [imadjust](https://it.mathworks.com/help/images/ref/imadjust.html?searchHighlight=imadjust&s_tid=doc_srchtitle)
-  [zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle)
-  [normxcorr2](https://it.mathworks.com/help/images/ref/normxcorr2.html?s_tid=doc_ta)
-  [abs](https://it.mathworks.com/help/matlab/ref/abs.html?searchHighlight=abs&s_tid=doc_srchtitle)
-  (https://it.mathworks.com/help/matlab/ref/max.html?searchHighlight=max&s_tid=doc_srchtitle)
-  [rot90](https://it.mathworks.com/help/matlab/ref/rot90.html?searchHighlight=rot90&s_tid=doc_srchtitle)
-  [find](https://it.mathworks.com/help/matlab/ref/find.html?searchHighlight=%5Bfind%5D&s_tid=doc_srchtitle)
-  [[imrotate](https://it.mathworks.com/help/images/ref/imrotate.html?searchHighlight=imrotate&s_tid=doc_srchtitle)]
+  [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?s_tid=doc_ta),
+  [imadjust](https://it.mathworks.com/help/images/ref/imadjust.html?searchHighlight=imadjust&s_tid=doc_srchtitle),
+  [zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle),
+  [normxcorr2](https://it.mathworks.com/help/images/ref/normxcorr2.html?s_tid=doc_ta),
+  [abs](https://it.mathworks.com/help/matlab/ref/abs.html?searchHighlight=abs&s_tid=doc_srchtitle),
+  (https://it.mathworks.com/help/matlab/ref/max.html?searchHighlight=max&s_tid=doc_srchtitle),
+  [rot90](https://it.mathworks.com/help/matlab/ref/rot90.html?searchHighlight=rot90&s_tid=doc_srchtitle),
+  [find](https://it.mathworks.com/help/matlab/ref/find.html?searchHighlight=%5Bfind%5D&s_tid=doc_srchtitle),
+  [[imrotate](https://it.mathworks.com/help/images/ref/imrotate.html?searchHighlight=imrotate&s_tid=doc_srchtitle)
 
-#### findSquare
+#### extractCells
   funzione che ritaglia dalla scacchiera le singole celle.
-  * **input:** imaggine scacchiera ritagliata e raddrizzata, valore di debug (0/1).
+  * **input:** imaggine scacchiera ritagliata e raddrizzata.
   * **output:** singole celle in oggetto di tipo "cell".
   * **funzione invocata da:** fenGenerator
   * **funzioni MATLAB invocate:**
-[size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle)
-[floor](https://it.mathworks.com/help/matlab/ref/floor.html?searchHighlight=%5Bfloor%5D&s_tid=doc_srchtitle)
-[cell](https://it.mathworks.com/help/matlab/ref/cell.html?searchHighlight=%5Bcell%5D&s_tid=doc_srchtitle)
-[imresize](https://it.mathworks.com/help/matlab/ref/imresize.html?searchHighlight=imresize&s_tid=doc_srchtitle)
-[imshow](https://it.mathworks.com/help/matlab/ref/imshow.html?searchHighlight=%5Bimshow%5D&s_tid=doc_srchtitle)
-[waitfor](https://it.mathworks.com/help/matlab/ref/waitfor.html?searchHighlight=%5Bwaitfor%5D&s_tid=doc_srchtitle)
+[size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle),
+[floor](https://it.mathworks.com/help/matlab/ref/floor.html?searchHighlight=%5Bfloor%5D&s_tid=doc_srchtitle),
+[cell](https://it.mathworks.com/help/matlab/ref/cell.html?searchHighlight=%5Bcell%5D&s_tid=doc_srchtitle),
+[imresize](https://it.mathworks.com/help/matlab/ref/imresize.html?searchHighlight=imresize&s_tid=doc_srchtitle),
+[imshow](https://it.mathworks.com/help/matlab/ref/imshow.html?searchHighlight=%5Bimshow%5D&s_tid=doc_srchtitle),
+[waitfor](https://it.mathworks.com/help/matlab/ref/waitfor.html?searchHighlight=%5Bwaitfor%5D&s_tid=doc_srchtitle),
 
 
 
@@ -214,13 +213,13 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 
 
 #### fenStringApp
-  funzione che crea la stringa fen partendo dalla matrice con le iniziali dei pezzi.
-  * **input:** matrice contenente le iniziali dei pezzi e n° immagine che si sta analizzando.
+  funzione che crea la stringa fen partendo da una stringa composta dalle iniziali dei pezzi.
+  * **input:** stringa con le iniziali dei pezzi e n° immagine che si sta analizzando.
   * **output:** stringa fen e un vaore tra 0(non completamente correta) e 100(completaamente corretta).
   * **funzione invocata da:** fenString.
   * **funzione invocata:** checkFen.
   * **funzioni MATLAB invocate:**
-[strcat](https://it.mathworks.com/help/matlab/ref/strcat.html?searchHighlight=%5Bstrcat%5D&s_tid=doc_srchtitle)
+[strcat](https://it.mathworks.com/help/matlab/ref/strcat.html?searchHighlight=%5Bstrcat%5D&s_tid=doc_srchtitle),
 [num2str](https://it.mathworks.com/help/matlab/ref/num2str.html?searchHighlight=%5Bnum2str%5D&s_tid=doc_srchtitle)
 
 #### checkFen
@@ -229,9 +228,9 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **output:** un numero tra 100(riconosciuta) e 0 (non riconosciuta).
   * **funzione invocata da:** fenStringApp.
   * **funzioni MATLAB invocate:**
-[sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle)
-[fopen](https://it.mathworks.com/help/matlab/ref/fopen.html?searchHighlight=%5Bfopen%5D&s_tid=doc_srchtitle)
-[fscanf](https://it.mathworks.com/help/matlab/ref/fscanf.html?searchHighlight=%5Bfscanf%5D&s_tid=doc_srchtitle)
+[sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle),
+[fopen](https://it.mathworks.com/help/matlab/ref/fopen.html?searchHighlight=%5Bfopen%5D&s_tid=doc_srchtitle),
+[fscanf](https://it.mathworks.com/help/matlab/ref/fscanf.html?searchHighlight=%5Bfscanf%5D&s_tid=doc_srchtitle),
 [strcmp](https://it.mathworks.com/help/matlab/ref/strcmp.html?searchHighlight=%5Bstrcmp%5D&s_tid=doc_srchtitle)
 
 #### wrongFen
@@ -241,11 +240,11 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **funzione invocata da:** fenString.
   * **funzione invocata:** expandFen.
   * **funzioni MATLAB invocate:**
-[sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle)
-[fopen](https://it.mathworks.com/help/matlab/ref/fopen.html?searchHighlight=%5Bfopen%5D&s_tid=doc_srchtitle)
-[fscanf](https://it.mathworks.com/help/matlab/ref/fscanf.html?searchHighlight=%5Bfscanf%5D&s_tid=doc_srchtitle)
+[sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle),
+[fopen](https://it.mathworks.com/help/matlab/ref/fopen.html?searchHighlight=%5Bfopen%5D&s_tid=doc_srchtitle),
+[fscanf](https://it.mathworks.com/help/matlab/ref/fscanf.html?searchHighlight=%5Bfscanf%5D&s_tid=doc_srchtitle),
 [sum](https://it.mathworks.com/help/matlab/ref/sum.html?searchHighlight=%5Bsum%5D&s_tid=doc_srchtitle)
-[length](https://it.mathworks.com/help/matlab/ref/length.html?searchHighlight=%5Blength%5D&s_tid=doc_srchtitle)
+[length](https://it.mathworks.com/help/matlab/ref/length.html?searchHighlight=%5Blength%5D&s_tid=doc_srchtitle),
 [strcat](https://it.mathworks.com/help/matlab/ref/strcat.html?searchHighlight=%5Bstrcat%5D&s_tid=doc_srchtitle)
 
 
@@ -255,36 +254,36 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **output:** fen in formato esteso.
   * **funzione invocata da:** wrongFen.
   * **funzioni MATLAB invocate:**
-[length](https://it.mathworks.com/help/matlab/ref/length.html?searchHighlight=%5Blength%5D&s_tid=doc_srchtitle)
-[str2num](https://it.mathworks.com/help/matlab/ref/str2num.html?searchHighlight=%5Bstr2num%5D&s_tid=doc_srchtitle)
-[strcat](https://it.mathworks.com/help/matlab/ref/strcat.html?searchHighlight=%5Bstrcat%5D&s_tid=doc_srchtitle)
+[length](https://it.mathworks.com/help/matlab/ref/length.html?searchHighlight=%5Blength%5D&s_tid=doc_srchtitle),
+[str2num](https://it.mathworks.com/help/matlab/ref/str2num.html?searchHighlight=%5Bstr2num%5D&s_tid=doc_srchtitle),
+[strcat](https://it.mathworks.com/help/matlab/ref/strcat.html?searchHighlight=%5Bstrcat%5D&s_tid=doc_srchtitle),
 
 #### testOCR //controllare
   script di test per la parte della creazione della stringa. Corrisponde ad una chiamata più completa rispetto allo script main
   * **funzioni invocate:** readImages, makeDataset, resizeImage, secondaryElaboration, chessDiscover, straightensChess, fenGenerator.
 <<<<<<< HEAD
   * **funzioni MATLAB invocate:**
-[zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle)
-[exist](https://it.mathworks.com/help/matlab/ref/exist.html?searchHighlight=%5Bexist%5D&s_tid=doc_srchtitle)
-[load](https://it.mathworks.com/help/matlab/ref/load.html?searchHighlight=%5Bload%5D&s_tid=doc_srchtitle)
-[save](https://it.mathworks.com/help/matlab/ref/save.html?searchHighlight=%5Bsave%5D&s_tid=doc_srchtitle)
-[cell](https://it.mathworks.com/help/matlab/ref/cell.html?searchHighlight=%5Bcell%5D&s_tid=doc_srchtitle)
-[etime](https://it.mathworks.com/help/matlab/ref/etime.html?searchHighlight=%5Betime%5D&s_tid=doc_srchtitle)
-[size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle)
-[sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle)
+[zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle),
+[exist](https://it.mathworks.com/help/matlab/ref/exist.html?searchHighlight=%5Bexist%5D&s_tid=doc_srchtitle),
+[load](https://it.mathworks.com/help/matlab/ref/load.html?searchHighlight=%5Bload%5D&s_tid=doc_srchtitle),
+[save](https://it.mathworks.com/help/matlab/ref/save.html?searchHighlight=%5Bsave%5D&s_tid=doc_srchtitle),
+[cell](https://it.mathworks.com/help/matlab/ref/cell.html?searchHighlight=%5Bcell%5D&s_tid=doc_srchtitle),
+[etime](https://it.mathworks.com/help/matlab/ref/etime.html?searchHighlight=%5Betime%5D&s_tid=doc_srchtitle),
+[size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle),
+[sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle),
 [disp](https://it.mathworks.com/help/matlab/ref/disp.html?searchHighlight=%5Bdisp%5D&s_tid=doc_srchtitle)
 
 #### main
   script per l'esecuzione del progetto in formato base
   * **funzioni invocate:** readImages, makeDataset, resizeImage, secondaryElaboration, chessDiscover, straightensChess, fenGenerator.
 * **funzioni MATLAB invocate:**
-[zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle)
-[exist](https://it.mathworks.com/help/matlab/ref/exist.html?searchHighlight=%5Bexist%5D&s_tid=doc_srchtitle)
-[load](https://it.mathworks.com/help/matlab/ref/load.html?searchHighlight=%5Bload%5D&s_tid=doc_srchtitle)
-[save](https://it.mathworks.com/help/matlab/ref/save.html?searchHighlight=%5Bsave%5D&s_tid=doc_srchtitle)
-[cell](https://it.mathworks.com/help/matlab/ref/cell.html?searchHighlight=%5Bcell%5D&s_tid=doc_srchtitle)
-[size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle)
-[sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle)
+[zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle),
+[exist](https://it.mathworks.com/help/matlab/ref/exist.html?searchHighlight=%5Bexist%5D&s_tid=doc_srchtitle),
+[load](https://it.mathworks.com/help/matlab/ref/load.html?searchHighlight=%5Bload%5D&s_tid=doc_srchtitle),
+[save](https://it.mathworks.com/help/matlab/ref/save.html?searchHighlight=%5Bsave%5D&s_tid=doc_srchtitle),
+[cell](https://it.mathworks.com/help/matlab/ref/cell.html?searchHighlight=%5Bcell%5D&s_tid=doc_srchtitle),
+[size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle),
+[sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle),
 [disp](https://it.mathworks.com/help/matlab/ref/disp.html?searchHighlight=%5Bdisp%5D&s_tid=doc_srchtitle)
 =======
 >>>>>>> ae8614baef9fd6275b7db078c385884074613ad6
