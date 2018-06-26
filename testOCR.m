@@ -57,4 +57,4 @@ for i=1:(b-a+1)
 end
 
 %% creazione matrice di confusione
-    [confMat, f]= confusionMat(fen,a,b);
+    [confMat, nCorrette]= confusionMat(fen,a,b);

@@ -261,15 +261,15 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 
 #### confusionMat
   funzione che crea la matrice di confusione.
-  * **input:** stringa FEN e intervallo delle immagini analizzate.
-  * **output:** fen in formato esteso.
-  * **funzione invocata da:** wrongFen.
+  * **input:** stringhe FEN e intervallo delle immagini analizzate.
+  * **output:** matrice di confusione e numero di stringhe fen completamente corrette.
+  * **funzione invocata da:** testOCR.
   * **funzioni MATLAB invocate:**
 [zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle),
 [sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle),
 [fopen](https://it.mathworks.com/help/matlab/ref/fopen.html?searchHighlight=%5Bfopen%5D&s_tid=doc_srchtitle),
 [fscanf](https://it.mathworks.com/help/matlab/ref/fscanf.html?searchHighlight=%5Bfscanf%5D&s_tid=doc_srchtitle),
-[confusionmat],(https://it.mathworks.com/help/search.html?qdoc=confusionmat&submitsearch=),
+[confusionmat](https://it.mathworks.com/help/search.html?qdoc=confusionmat&submitsearch=),
 [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle),
 [num2cell](https://it.mathworks.com/help/matlab/ref/num2cell.html)
 
