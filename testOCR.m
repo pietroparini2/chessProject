@@ -7,7 +7,7 @@ t0 = clock;
 
 %% fase di inizziazione e preparazione
 a = 1;
-b = 10;
+b = 1;
 images = readImages(a,b);
 test= zeros(1, (b-a+1));
 
@@ -40,8 +40,8 @@ for i=1:(b-a+1)
     t(i) = etime(clock,t0);
     
     %% per visualizzare scacchiera girata correttamente
-%     straightChess = imrotate(straightChess, rotazione);
-%     figure, imshow(straightChess);
+    straightChess = imrotate(straightChess, rotazione);
+    figure, imshow(straightChess);
     
    
     %% stampa posizione risultato e tempo

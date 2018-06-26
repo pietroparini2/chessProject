@@ -29,10 +29,6 @@ for i=1:(b-a+1)
     %% chiamata al metodo per generare stringa fen
     [fen{i}, rotazione, risultati{i}] = fenGenerator(straightChess, pieces, a+i-1);
     
-    %% per visualizzare scacchiera girata correttamente
-    straightChess = imrotate(straightChess, rotazione);
-    figure, imshow(straightChess);
-    
     %% stampa posizione risultato e tempo
     if size(risultati{i}, 2) == 1
         pOut = sprintf('immagine %d:\n  corretta al = %d%%\n  FEN = %s \n', a+i-1, risultati{i}, fen{i}); %s per stringa

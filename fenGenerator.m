@@ -3,9 +3,9 @@ function [fen, angle, risultato] = fenGenerator (chessboard, pieces, nImg)
     k = 7;
     chessboard = chessboard(k+1:end-k,k+1:end-k, :);
     chessboard = imadjust(rgb2gray(chessboard)); %, [0.01 0.6], []
-
+    
     %% chiamata al metodo per estrarre le celle
-    cells = findSquare(chessboard, 0);
+    cells = extractCells(chessboard, 0);
 
     scores = zeros(8, 8, 4);
     indici = zeros(8, 8, 4);
