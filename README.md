@@ -183,10 +183,10 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   [zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle),
   [normxcorr2](https://it.mathworks.com/help/images/ref/normxcorr2.html?s_tid=doc_ta),
   [abs](https://it.mathworks.com/help/matlab/ref/abs.html?searchHighlight=abs&s_tid=doc_srchtitle),
-  (https://it.mathworks.com/help/matlab/ref/max.html?searchHighlight=max&s_tid=doc_srchtitle),
+  [max](https://it.mathworks.com/help/matlab/ref/max.html?searchHighlight=max&s_tid=doc_srchtitle),
   [rot90](https://it.mathworks.com/help/matlab/ref/rot90.html?searchHighlight=rot90&s_tid=doc_srchtitle),
   [find](https://it.mathworks.com/help/matlab/ref/find.html?searchHighlight=%5Bfind%5D&s_tid=doc_srchtitle),
-  [[imrotate](https://it.mathworks.com/help/images/ref/imrotate.html?searchHighlight=imrotate&s_tid=doc_srchtitle)
+  [imrotate](https://it.mathworks.com/help/images/ref/imrotate.html?searchHighlight=imrotate&s_tid=doc_srchtitle)
 
 #### extractCells
   funzione che ritaglia dalla scacchiera le singole celle.
@@ -223,8 +223,8 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 [num2str](https://it.mathworks.com/help/matlab/ref/num2str.html?searchHighlight=%5Bnum2str%5D&s_tid=doc_srchtitle)
 
 #### checkFen
-  funzione che verifica se la stringa fen è corertta (ritorna 100) o incorretta(ritorna 0).
-  * **input:** matrice contenente le iniziali dei pezzi e n° immagine che si sta analizzando.
+  funzione che verifica se la stringa fen è corertta (ritorna 100) o incorretta (ritorna 0).
+  * **input:** stringa fen e n° immagine che si sta analizzando.
   * **output:** un numero tra 100(riconosciuta) e 0 (non riconosciuta).
   * **funzione invocata da:** fenStringApp.
   * **funzioni MATLAB invocate:**
@@ -235,7 +235,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 
 #### wrongFen
   funzione che controlla di quanto è sbagliata la stringa fen e ritorna la percentuale di correttezza e i pezzi che ha sbagliato a riconoscere.
-  * **input:** stringa fen in versione estesa e n° dell'immagine che sta analizzando.
+  * **input:** stringa iniziali pezzi in versione estesa e n° dell'immagine che sta analizzando.
   * **output:** percentuale di pezi trovati correttamente e stringa contenente i pezzi che sono stati scambiati.
   * **funzione invocata da:** fenString.
   * **funzione invocata:** expandFen.
@@ -256,12 +256,26 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
   * **funzioni MATLAB invocate:**
 [length](https://it.mathworks.com/help/matlab/ref/length.html?searchHighlight=%5Blength%5D&s_tid=doc_srchtitle),
 [str2num](https://it.mathworks.com/help/matlab/ref/str2num.html?searchHighlight=%5Bstr2num%5D&s_tid=doc_srchtitle),
-[strcat](https://it.mathworks.com/help/matlab/ref/strcat.html?searchHighlight=%5Bstrcat%5D&s_tid=doc_srchtitle),
+[strcat](https://it.mathworks.com/help/matlab/ref/strcat.html?searchHighlight=%5Bstrcat%5D&s_tid=doc_srchtitle)
 
-#### testOCR //controllare
+
+#### confusionMat
+  funzione che crea la matrice di confusione.
+  * **input:** stringa FEN e intervallo delle immagini analizzate.
+  * **output:** fen in formato esteso.
+  * **funzione invocata da:** wrongFen.
+  * **funzioni MATLAB invocate:**
+[zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle),
+[sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle),
+[fopen](https://it.mathworks.com/help/matlab/ref/fopen.html?searchHighlight=%5Bfopen%5D&s_tid=doc_srchtitle),
+[fscanf](https://it.mathworks.com/help/matlab/ref/fscanf.html?searchHighlight=%5Bfscanf%5D&s_tid=doc_srchtitle),
+[confusionmat],(https://it.mathworks.com/help/search.html?qdoc=confusionmat&submitsearch=),
+[size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle),
+[num2cell](https://it.mathworks.com/help/matlab/ref/num2cell.html)
+
+#### testOCR
   script di test per la parte della creazione della stringa. Corrisponde ad una chiamata più completa rispetto allo script main
-  * **funzioni invocate:** readImages, makeDataset, resizeImage, secondaryElaboration, chessDiscover, straightensChess, fenGenerator.
-<<<<<<< HEAD
+  * **funzioni invocate:** readImages, makeDataset, resizeImage, chooseElaboration, chessDiscover, fenGenerator,confusionMat.
   * **funzioni MATLAB invocate:**
 [zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle),
 [exist](https://it.mathworks.com/help/matlab/ref/exist.html?searchHighlight=%5Bexist%5D&s_tid=doc_srchtitle),
@@ -275,7 +289,7 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 
 #### main
   script per l'esecuzione del progetto in formato base
-  * **funzioni invocate:** readImages, makeDataset, resizeImage, secondaryElaboration, chessDiscover, straightensChess, fenGenerator.
+  * **funzioni invocate:** readImages, makeDataset, resizeImage, chooseElaboration, chessDiscover, fenGenerator.
 * **funzioni MATLAB invocate:**
 [zeros](https://it.mathworks.com/help/matlab/ref/zeros.html?searchHighlight=zeros&s_tid=doc_srchtitle),
 [exist](https://it.mathworks.com/help/matlab/ref/exist.html?searchHighlight=%5Bexist%5D&s_tid=doc_srchtitle),
