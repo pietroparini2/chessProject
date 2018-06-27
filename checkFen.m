@@ -5,7 +5,7 @@ function risultato = checkFen(fen, i)
     fFen = fopen(strApp);
     originalFen = fscanf(fFen, '%c');
     
-    % controllo se sono uguali
+    %% controllo se sono uguali
     risultato = strcmp(originalFen(1:end-1), fen);
     
     if risultato == 1

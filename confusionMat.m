@@ -1,4 +1,4 @@
-function [confMat, correct] = confusionMat( results,a,b)
+function [confMat, correct] = confusionMat(results, a, b)
     l=(b-a+1);
     confMat=zeros(13,13);
     labels= double('aKkQqRrBbNnPp');
