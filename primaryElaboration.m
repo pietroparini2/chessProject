@@ -16,7 +16,7 @@ function out=primaryElaboration (image, testFlag)
         edge(currCC) = 0;
       end
     end
-    testFunction(testFlag,im,im1,im2,edge);
+     P= testFunction(testFlag,im,im1,im2,edge);
     
     out=edge;
 end

@@ -22,7 +22,7 @@ function out= secondaryElaboration (image,testFlag)
       end
     end
     
-    testFunction(testFlag,close,im,edge,bin);
+    P= testFunction(testFlag,close,im,edge,bin);
     
     out=bin;
 end

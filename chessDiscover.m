@@ -24,7 +24,7 @@ function out = chessDiscover(bwImage, scale, original_image, testFlag)
     chess = imcrop (original_image, (probableChessboard.BoundingBox(:)) .* scale);
     probableChessboard.Image= chess;
     %chiamata alla funzione di test che verrà applicata solo se testFlag=1
-    testFunction(testFlag, bwImage,index, equalSides);
+    P= testFunction(testFlag, bwImage,index, equalSides);
 
     out = probableChessboard;
 end
