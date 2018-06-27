@@ -42,13 +42,10 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    sviluppata in modo complementare alla secondaryElaboration, per poter individuare le scacchiere la dove c'è la presenza di uno sfondo a texture
    * **input:** immagine già nella dimensione stabilita per l'elaborazione
    * **output:** immagine in bianco e nero pronta per il riconoscimento dei componenti
-<<<<<<< HEAD
-   * **parametri:** misure dischi (!!!scrivere il perchè dopo aver fatto il ripasso)
-   * **funzioni MATLAB invocate:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [im2double](https://it.mathworks.com/help/matlab/ref/im2double.html?searchHighlight=im2double&s_tid=doc_srchtitle), [imopen](https://it.mathworks.com/help/images/ref/imopen.html?searchHighlight=imopen&s_tid=doc_srchtitle),
-=======
+   * **parametri:** misure dischi
+   * **funzioni MATLAB invocate:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [im2double](https://it.mathworks.com/help/matlab/ref/im2double.html?searchHighlight=im2double&s_tid=doc_srchtitle), [imopen](https://it.mathworks.com/help/images/ref/imopen.html?searchHighlight=imopen&s_tid=doc_srchtitle)
    * **parametri:** misure dischi
    * **matlab functions:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [im2double](https://it.mathworks.com/help/matlab/ref/im2double.html?searchHighlight=im2double&s_tid=doc_srchtitle), [imopen](https://it.mathworks.com/help/images/ref/imopen.html?searchHighlight=imopen&s_tid=doc_srchtitle),
->>>>>>> ae8614baef9fd6275b7db078c385884074613ad6
    [imclose](https://it.mathworks.com/help/images/ref/imclose.html?searchHighlight=imclose&s_tid=doc_srchtitle), [strel](https://it.mathworks.com/help/images/ref/strel.html?searchHighlight=strel&s_tid=doc_srchtitle),
    [imbinarize](https://it.mathworks.com/help/images/ref/imbinarize.html?searchHighlight=imbinarize&s_tid=doc_srchtitle)
    * **test:** testPrimaryElaboration
@@ -66,13 +63,10 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    porta l'immagine a livelli di grigi se necessario, elabora tramite equalizzazione dell istogramma e sogliatura immagine con soglia individuata tramite Otsu.
    * **input:** immagine già nella dimensione stabilita per l'elaborazione, boolean per il testing
    * **output:** immagine in bianco e nero pronta per il riconoscimento delle componenti
-<<<<<<< HEAD
    * **parametri:** misura disco =6= per tentativi dopo aver stimato sulle prime 20 immagini che doveva essere 4,6,8 o 10 (!!!scrivere il perchè in due parole)
    * **funzioni MATLAB invocate:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [adapthisteq](https://it.mathworks.com/help/images/ref/adapthisteq.html?searchHighlight=adapthisteq&s_tid=doc_srchtitle), [imclose](https://it.mathworks.com/help/images/ref/imclose.html?searchHighlight=imclose&s_tid=doc_srchtitle), [strel](https://it.mathworks.com/help/images/ref/strel.html?searchHighlight=strel&s_tid=doc_srchtitle), [graythresh](https://it.mathworks.com/help/images/ref/graythresh.html?searchHighlight=graythresh&s_tid=doc_srchtitle), [imbinarize](https://it.mathworks.com/help/images/ref/imbinarize.html?searchHighlight=imbinarize&s_tid=doc_srchtitle)
-=======
    * **parametri:** misura disco
    * **matlab functions:** [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle), [rgb2gray](https://it.mathworks.com/help/matlab/ref/rgb2gray.html?searchHighlight=rgb2gray&s_tid=doc_srchtitle), [adapthisteq](https://it.mathworks.com/help/images/ref/adapthisteq.html?searchHighlight=adapthisteq&s_tid=doc_srchtitle), [imclose](https://it.mathworks.com/help/images/ref/imclose.html?searchHighlight=imclose&s_tid=doc_srchtitle), [strel](https://it.mathworks.com/help/images/ref/strel.html?searchHighlight=strel&s_tid=doc_srchtitle), [graythresh](https://it.mathworks.com/help/images/ref/graythresh.html?searchHighlight=graythresh&s_tid=doc_srchtitle), [imbinarize](https://it.mathworks.com/help/images/ref/imbinarize.html?searchHighlight=imbinarize&s_tid=doc_srchtitle)
->>>>>>> ae8614baef9fd6275b7db078c385884074613ad6
    * **test:** testSecondaryElaboration  
 ![imageMainElaboration](imDOC/secondaryElaboration.png)
 
@@ -88,13 +82,10 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
    sfruttando le bounding box va a cercare le bounding box quadrate, con un errore del 20%,  per poi selezionare quella più grande. (da aggiungere un controllo sulle diagonali =, forse anche pitagora)
    * **input:** immagine elaborata(per ora da elaborationOne), la scala dell'immagine elaborata(output di resizeImage), immagine originale.
    * **output:** la probabile chessboard sotto forma di struct contenente boundingbox, convexarea, convexImage ed scacchiera ritagliata dall'immagine originale
-<<<<<<< HEAD
    * **parametri:**  errore di approssimazione dei lati = 0.20= stimato sulle prime 10 immagini, considerando che è solo un primo passaggio il secondo verrà poi implementato (dopo si può un po' abbassare )
    * **funzioni MATLAB invocate:** [regionprops](https://it.mathworks.com/help/images/ref/regionprops.html?searchHighlight=regionprops&s_tid=doc_srchtitle),
-=======
    * **parametri:**  errore di approssimazione dei lati = 0.18
    * **matlab functions:** [regionprops](https://it.mathworks.com/help/images/ref/regionprops.html?searchHighlight=regionprops&s_tid=doc_srchtitle),
->>>>>>> ae8614baef9fd6275b7db078c385884074613ad6
    [sort](https://it.mathworks.com/help/matlab/ref/sort.html?searchHighlight=sort&s_tid=doc_srchtitle),
    [fliplr](https://it.mathworks.com/help/matlab/ref/fliplr.html?searchHighlight=fliplr&s_tid=doc_srchtitle) (guardare anche le funzioni invocate per il test)
    * **test:** testChessDiscover
@@ -299,5 +290,4 @@ La prima parte del progetto si occupa di estrarre dall'immagine originale la sca
 [size](https://it.mathworks.com/help/matlab/ref/size.html?searchHighlight=size&s_tid=doc_srchtitle),
 [sprintf](https://it.mathworks.com/help/matlab/ref/sprintf.html?searchHighlight=%5Bsprintf%5D&s_tid=doc_srchtitle),
 [disp](https://it.mathworks.com/help/matlab/ref/disp.html?searchHighlight=%5Bdisp%5D&s_tid=doc_srchtitle)
-=======
->>>>>>> ae8614baef9fd6275b7db078c385884074613ad6
+
