@@ -9,9 +9,7 @@ function out= secondaryElaboration (image,testFlag)
     close= imclose(im, strel ('disk', 6));
     edge = close - im;
     otsu = graythresh(edge);
-    bin = imbinarize (edge, otsu);
-    
-    
+    bin = imbinarize(edge, otsu);
     %algoritmo aggiunto per migliorare i tempi di esecuzione 
     cc = bwconncomp(bin);
     ccSizeThreshold = 2042;%stimato per non eliminare la scacchiera e non troppo alto da allungare i tempi

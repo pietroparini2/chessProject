@@ -10,8 +10,8 @@ function out = chessDiscover(bwImage, scale, original_image, testFlag)
         
         current.BoundingBox = infoBox(i).BoundingBox;
         current.ConvexArea = infoBox(i).ConvexArea;
-        current.ConvexImage = infoBox(i).ConvexImage;
-       
+        current.ConvexImage = infoBox(i).ConvexImage; 
+        
         if abs(width - height) / (height + width) < errorAprox
             equalSides = [equalSides; current];
         end

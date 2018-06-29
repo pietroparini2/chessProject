@@ -9,7 +9,7 @@ function out=primaryElaboration (image, testFlag)
     edge = imbinarize(im2 - im);
     
     cc = bwconncomp(edge);
-    ccSizeThreshold = 2042;%parametro fissato a caso
+    ccSizeThreshold = 2042;
     for i = 1 : cc.NumObjects
       currCC = cc.PixelIdxList{i};
       if size(currCC, 1) < ccSizeThreshold
